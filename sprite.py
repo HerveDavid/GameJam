@@ -8,14 +8,14 @@ except ImportError as err:
 # Classe pour la création d'un sprite
 class Sprite(pygame.sprite.Sprite):
 
-    def __init__(self, images):
+    def __init__(self, images, scale=0.8):
 
         # Héritage avec la classe mère
         super(Sprite, self).__init__()
 
         # Images du sprite pour l'animation
         if isinstance(images, str):
-            self.images = chargeImages(images)
+            self.images = chargeImages(images, scale)
         elif isinstance(images, list):
             self.images = images
         else:

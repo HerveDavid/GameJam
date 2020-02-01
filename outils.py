@@ -12,10 +12,10 @@ VERSION = '0.1'
 
 
 # charge les images depuis un dossier dans une liste
-def chargeImages(dossier: str):
+def chargeImages(dossier: str, scale=1):
     images = []
     for fichier in os.listdir(dossier):
-        image = pygame.image.load(dossier + os.sep + fichier).convert()
+        image = pygame.image.load(dossier + os.sep + fichier).convert_alpha()
         images.append(image)
     return images
 
