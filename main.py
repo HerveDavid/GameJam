@@ -36,7 +36,6 @@ def main():
             player.bouger(event)
 
         player.update(dt)
-
         pygame.display.update()
 
 

@@ -21,11 +21,11 @@ class Player():
         # Fenetre affilié
         self.fenetre = fenetre
 
-        # Vitesse du sprite
+        # Déplacement du joueur
         self.deplacement = pygame.math.Vector2(0, 0)
 
         # Vitesse du joueur
-        self.vitesse = 0
+        self.vitesse = 3
 
         # Vue a gauche
         self.gauche = False
@@ -54,30 +54,54 @@ class Player():
 
             if action.key == pygame.K_RIGHT:
                 self.deplacement.x = self.vitesse
-                self.updtateSprite('run')
+                self.updtateSprite('walk')
                 self.gauche = False
-                print('d')
             elif action.key == pygame.K_LEFT:
-                self.deplacement.y = -self.vitesse
-                self.updtateSprite('runGauche')
+                self.deplacement.x = -self.vitesse
+                self.updtateSprite('walkGauche')
                 self.gauche = True
-                print('g')
+            elif action.key == pygame.K_SPACE:
+                if self.gauche:
+                    self.updtateSprite('jumpGauche')
+                    # self.deplacement.x = -self.vitesse
+                    # self.deplacement.y = -2
+                else:
+                    self.updtateSprite('jump')
+                    # self.deplacement.x = self.vitesse
+                    # self.deplacement.y = -2
+
+
 
         elif action.type == pygame.KEYUP:
 
+            self.deplacement = pygame.math.Vector2(0, 0)
+
             if action.key == pygame.K_RIGHT or action.key == pygame.K_LEFT:
-                self.deplacement.x = 0
                 if self.gauche:
                     self.updtateSprite('idleGauche')
                 else:
                     self.updtateSprite('idle')
-                print('u')
+
+            elif action.key == pygame.K_SPACE:
+                if self.gauche:
+                    self.updtateSprite('idleGauche')
+                    # self.sprite.rect.x = self.sprite.rect.x - self.vitesse
+                else:
+                    self.updtateSprite('idle')
+                #     self.sprite.rect.x = self.sprite.rect.x + self.vitesse
+                # self.sprite.rect.y = self.sprite.rect.y - 2
 
     def updtateSprite(self, dossier: str):
+        bufferSprite = self.sprite
         self.sprite = Sprite(self.images[dossier])
+        self.sprite.rect = bufferSprite.rect
         self.group.empty()
         self.group.add(self.sprite)
 
     def update(self, dt):
+        self.sprite.deplacement = self.deplacement
         self.group.update(dt)  # Calls the 'update' method on all sprites in the list (currently just the player).
         self.group.draw(self.fenetre)
+
+
+

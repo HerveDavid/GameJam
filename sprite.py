@@ -39,6 +39,9 @@ class Sprite(pygame.sprite.Sprite):
         # Temps actuel de la frame
         self.frameActuel = 0
 
+        # Déplacement du sprite
+        self.deplacement = pygame.math.Vector2(0, 0)
+
 
     # Anime le sprite par rapport au temps
     def animeSpriteTemps(self, temps: float):
@@ -50,6 +53,9 @@ class Sprite(pygame.sprite.Sprite):
             self.index = int((self.index + 1) % self.frames)
             self.image = self.images[self.index]
 
+        self.rect.move_ip(self.deplacement)
+
     # Anime le sprite pour le groupe d'un sprite
     def update(self, dt):
         self.animeSpriteTemps(dt)
+
