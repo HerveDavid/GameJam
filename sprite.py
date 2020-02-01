@@ -3,18 +3,23 @@ try:
     import pygame
     from outils import *
 except ImportError as err:
-    print(err)
+    print("Echec importation: {0}").format(err)
 
 # Classe pour la création d'un sprite
 class Sprite(pygame.sprite.Sprite):
 
-    def __init__(self, nomFichier: str):
+    def __init__(self, images):
 
         # Héritage avec la classe mère
         super(Sprite, self).__init__()
 
         # Images du sprite pour l'animation
-        self.images = chargeImages(nomFichier)
+        if isinstance(images, str):
+            self.images = chargeImages(images)
+        elif isinstance(images, list):
+            self.images = images
+        else:
+            self.images = None
 
         # Indice des images pour l'animation
         self.index = 0
@@ -33,6 +38,7 @@ class Sprite(pygame.sprite.Sprite):
 
         # Temps actuel de la frame
         self.frameActuel = 0
+
 
     # Anime le sprite par rapport au temps
     def animeSpriteTemps(self, temps: float):

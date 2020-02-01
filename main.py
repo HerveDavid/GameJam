@@ -1,34 +1,42 @@
-from sprite import Sprite
-import pygame
+try:
+    # Mes modules
+    from sprite import Sprite
+    from player import Player
+    from outils import *
 
-pygame.init()
+    # Pygame
+    import pygame
+    from pygame.locals import *
+    succes, echecs = pygame.init()
+    print("{0} successes and {1} failures".format(succes, echecs))
 
-SIZE = WIDTH, HEIGHT = 1040, 720
+except ImportError as err:
+    print("Echec importation: {0}").format(err)
+
 BACKGROUND_COLOR = pygame.Color('black')
 FPS = 60
 
-screen = pygame.display.set_mode(SIZE)
+fenetre = pygame.display.set_mode(SIZE)
 clock = pygame.time.Clock()
 
 
 def main():
-    player = Sprite('assert/player/idle')
-    all_sprites = pygame.sprite.Group(player)  # Creates a sprite group and adds 'player' to it.
-
+    player = Player("test", fenetre)
+    # player.add(Sprite('assert/player/dead'))
     running = True
     while running:
 
-        dt = clock.tick(FPS) / 500  # Amount of seconds between each loop.
+        dt = clock.tick(FPS) / 1000
 
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 running = False
 
+            player.bouger(event)
 
-        all_sprites.update(dt)  # Calls the 'update' method on all sprites in the list (currently just the player).
+        player.update(dt)
 
-        screen.fill(BACKGROUND_COLOR)
-        all_sprites.draw(screen)
         pygame.display.update()
 
 
