@@ -98,40 +98,33 @@ class Player():
         self.group.empty()
         self.group.add(self.sprite)
 
-    def update(self, dt, screen):
+    def update(self, dt):
         self.sprite.deplacement = self.deplacement
-        self.group.update(dt)  # Calls the 'update' method on all sprites in the list (currently just the player).
+        self.group.update(dt)
         self.group.draw(self.fenetre)
 
 
-    def move(self,camera_pos):
-        pos_x,pos_y = camera_pos # Split camara_pos
+    def move(self,camera):
+        pos_x,pos_y = camera# Split camara_pos
         #
-        key = pygame.key.get_pressed() # Get Keyboard Input
-        if key[pygame.K_z]: # Check Key
-            self.sprite.rect.y -= 8 # Move Player Rect Coord
-            pos_y += 8 # Move Camara Coord Against Player Rect
+        key = pygame.key.get_pressed()
+        if key[pygame.K_z]:
+            pos_y += self.vitesse
         if key[pygame.K_q]:
-            self.sprite.rect.x -= 8
-            pos_x += 8
+            pos_x += self.vitesse
         if key[pygame.K_s]:
-            self.sprite.rect.y += 8
-            pos_y -= 8
+            pos_y -= self.vitesse
         if key[pygame.K_d]:
-            self.sprite.rect.x += 8
-            pos_x -= 8
-        #
-        if self.sprite.rect.x < 0: # Simple Sides Collision
-            self.sprite.rect.x = 0 # Reset Player Rect Coord
-            pos_x = camera_pos[0] #Reset Camera Pos Coord
-        elif self.sprite.rect.x > 984:
-            self.sprite.rect.x = 984
-            pos_x = camera_pos[0]
+            pos_x -= self.vitesse
+
+        if self.sprite.rect.x < 0:
+            self.sprite.rect.x = 0
+            pos_x = camera[0]
+        elif self.sprite.rect.x > WIDTH:
+            pos_x = camera[0]
         if self.sprite.rect.y < 0:
-            self.sprite.rect.y = 0
-            pos_y = camera_pos[1]
-        elif self.sprite.rect.y > 984:
-            self.sprite.rect.y = 984
-            pos_y = camera_pos[1]
+            pos_y = camera[1]
+        elif self.sprite.rect.y > HEIGHT:
+            pos_y = camera[1]
         #
         return (pos_x,pos_y) # Return New Camera Pos

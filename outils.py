@@ -10,6 +10,11 @@ SIZE = WIDTH, HEIGHT = 1024, 768
 FPS = 60
 VERSION = '0.1'
 
+# Pages
+JOUER = 1
+CREDITS = 2
+REGLAGES = 3
+MENU = 4
 
 # charge les images depuis un dossier dans une liste
 def chargeImages(dossier: str, scale=1):
