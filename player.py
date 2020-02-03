@@ -9,14 +9,15 @@ class Player():
         self.sprite = Sprite('Assets/main_character_sprites.png', 8, 1, 5)
         self.x, self.y = x, y
         self.velocity = 10
+        self.flip = False
 
     def draw(self, surface):
         if self.move() == pygame.K_RIGHT:
-            self.sprite.draw(surface, self.x, self.y)
+            self.sprite.draw(surface, self.x, self.y, self.flip)
         elif self.move() == pygame.K_LEFT:
-            self.sprite.draw(surface, self.x, self.y, True)
+            self.sprite.draw(surface, self.x, self.y, self.flip)
         else:
-            self.sprite.draw(surface, self.x, self.y)
+            self.sprite.draw(surface, self.x, self.y, self.flip)
 
 
     def move(self):
@@ -24,10 +25,12 @@ class Player():
 
         if keys[pygame.K_RIGHT]:
             self.x += self.velocity
+            self.flip = True
             return pygame.K_RIGHT
 
         if keys[pygame.K_LEFT]:
             self.x -= self.velocity
+            self.flip = True
             return pygame.K_LEFT
 
         return None
