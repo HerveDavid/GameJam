@@ -13,6 +13,8 @@ class Sprite():
                                              int(self.sheet.get_rect().height * self.scale ))
                                             )
 
+        self.sheetFlip = pygame.transform.flip(self.sheet, True, False)
+
         self.cols = cols
         self.rows = rows
         self.totalCells = self.rows * self.cols
@@ -31,9 +33,15 @@ class Sprite():
 
         self.cellIndex = 0
 
-    def draw(self, surface, x, y, handle=0):
+    def draw(self, surface, x, y, flip=False, handle=0):
+        cell = None
         if self.totalCells > 1:
             self.cellIndex = (self.cellIndex + 1) % self.totalCells
-            surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), pygame.Rect(self.cells[self.cellIndex]))
+            cell = pygame.Rect(self.cells[self.cellIndex])
         else:
-            surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), pygame.Rect(self.cells[0]))
+            cell = pygame.Rect(self.cells[0])
+
+        if flip:
+            surface.blit(self.sheetFlip, (x + self.handle[handle][0], y + self.handle[handle][1]), cell)
+        else:
+            surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), cell)

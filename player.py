@@ -3,15 +3,16 @@ from sprite import Sprite
 
 class Player():
 
-    def __init__(self, sprite: Sprite, x, y):
+    def __init__(self, x, y):
 
-        self.sprite = sprite
-        self.sprite2 = Sprite('Assets/Rainbow.png', 7, 4)
+        self.sprite = Sprite('Assets/RobocopWalk.png', 8, 1, 5)
         self.x, self.y = x, y
 
     def draw(self, surface):
-        if self.move():
-            self.sprite2.draw(surface, self.x, self.y)
+        if self.move() == 1:
+            self.sprite.draw(surface, self.x, self.y)
+        elif self.move() == 2:
+            self.sprite.draw(surface, self.x, self.y, True)
         else:
             self.sprite.draw(surface, self.x, self.y)
 
@@ -25,6 +26,6 @@ class Player():
 
         if keys[pygame.K_LEFT]:
             self.x -= 10
-            return 1
+            return 2
 
         return 0

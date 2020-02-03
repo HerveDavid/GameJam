@@ -7,9 +7,7 @@ from player import Player
 
 def main(screen: pygame.display) -> None:
 
-    p = Sprite('Assets/RobocopWalk.png', 8, 1, 5)
-    player = Player(p, 0, 0)
-    x, y = 0, 0
+    player = Player(100, 100)
     while RUNNING:
         events()
         player.draw(screen)
