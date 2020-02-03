@@ -3,8 +3,6 @@ from sprite import Sprite
 
 class Player():
 
-    test = 2
-
     def __init__(self, x, y):
 
         self.sprite = Sprite('Assets/main_character_sprites.png', 8, 1, 5)
