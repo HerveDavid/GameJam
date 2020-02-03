@@ -34,14 +34,21 @@ class Sprite():
         self.cellIndex = 0
 
     def draw(self, surface, x, y, flip=False, handle=0):
-        cell = None
-        if self.totalCells > 1:
-            self.cellIndex = (self.cellIndex + 1) % self.totalCells
-            cell = pygame.Rect(self.cells[self.cellIndex])
-        else:
-            cell = pygame.Rect(self.cells[0])
 
-        if flip:
-            surface.blit(self.sheetFlip, (x + self.handle[handle][0], y + self.handle[handle][1]), cell)
-        else:
+        cell = pygame.Rect(self.cells[0]) if self.totalCells > 1 else 1
+
+        if not flip:
+
+            if cell:
+                self.cellIndex = (self.cellIndex + 1) % self.totalCells
+                cell = pygame.Rect(self.cells[self.cellIndex])
+
             surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), cell)
+
+        else:
+
+            if cell:
+                self.cellIndex = (self.cellIndex - 1) % self.totalCells
+                cell = pygame.Rect(self.cells[self.cellIndex])
+
+            surface.blit(self.sheetFlip, (x + self.handle[handle][0], y + self.handle[handle][1]), cell)

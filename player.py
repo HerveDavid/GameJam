@@ -8,6 +8,7 @@ class Player():
         self.sprites = {
             'run': Sprite('Assets/Player/run.png', 8, 1, 5)
         }
+
         self.x, self.y = x, y
         self.velocity = 20
         self.flip = False
@@ -18,16 +19,21 @@ class Player():
 
         if keys[pygame.K_RIGHT]:
             self.walk(surface, False)
+
         elif keys[pygame.K_LEFT]:
             self.walk(surface, True)
+
         else:
             self.sprites['run'].draw(surface, self.x, self.y, self.flip)
 
     def walk(self, surface, flip):
+
         self.flip = flip
+
         if flip:
             self.x -= self.velocity
         else:
             self.x += self.velocity
+
         self.sprites['run'].draw(surface, self.x, self.y, self.flip)
 
