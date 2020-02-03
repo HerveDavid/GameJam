@@ -6,11 +6,12 @@ class Player():
     def __init__(self, sprite: Sprite, x, y):
 
         self.sprite = sprite
+        self.sprite2 = Sprite('Assets/Rainbow.png', 7, 4)
         self.x, self.y = x, y
 
     def draw(self, surface):
         if self.move():
-            self.sprite.draw(surface, self.x, self.y)
+            self.sprite2.draw(surface, self.x, self.y)
         else:
             self.sprite.draw(surface, self.x, self.y)
 
