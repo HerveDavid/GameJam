@@ -7,7 +7,7 @@ from player import Player
 
 def main(screen: pygame.display) -> None:
 
-    player = Player(100, 100)
+    player = Player(300, 100)
     while RUNNING:
         events()
         player.draw(screen)
