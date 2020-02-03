@@ -17,9 +17,15 @@ class Player():
 
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_RIGHT]:
+        # Joeur fait un jump à gauche ou droite
+        if keys[pygame.K_SPACE] and (keys[pygame.K_LEFT] or keys[pygame.K_RIGHT]):
+            self.jump(surface, keys[pygame.K_LEFT])
+
+        # Joueur va à droite
+        elif keys[pygame.K_RIGHT]:
             self.walk(surface, False)
 
+        # Joueur va à gauche
         elif keys[pygame.K_LEFT]:
             self.walk(surface, True)
 
@@ -37,3 +43,15 @@ class Player():
 
         self.sprites['run'].draw(surface, self.x, self.y, self.flip)
 
+    def jump(self, surface, flip):
+
+        self.flip = flip
+
+        if flip:
+            self.x -= self.velocity
+            self.y -= 100
+        else:
+            self.x += self.velocity
+            self.y -= 100
+
+        self.sprites['run'].draw(surface, self.x, self.y, self.flip)
