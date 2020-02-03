@@ -3,6 +3,7 @@ from sprite import Sprite
 
 class Player():
 
+    test = 2
 
     def __init__(self, x, y):
 
