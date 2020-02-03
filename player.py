@@ -3,11 +3,10 @@ from sprite import Sprite
 
 class Player():
 
-    a = 2
 
     def __init__(self, x, y):
 
-        self.sprite = Sprite('Assets/RobocopWalk.png', 8, 1, 5)
+        self.sprite = Sprite('Assets/main_character_sprites.png', 8, 1, 5)
         self.x, self.y = x, y
         self.velocity = 10
 
