@@ -5,7 +5,7 @@ class Player():
 
     def __init__(self, x, y):
 
-        self.sprite = Sprite('Assets/main_character_sprites.png', 8, 1, 5)
+        self.sprite = Sprite('Assets/Player/run.png', 8, 1, 5)
         self.x, self.y = x, y
         self.velocity = 10
         self.flip = False
@@ -24,7 +24,7 @@ class Player():
 
         if keys[pygame.K_RIGHT]:
             self.x += self.velocity
-            self.flip = True
+            self.flip = False
             return pygame.K_RIGHT
 
         if keys[pygame.K_LEFT]:
