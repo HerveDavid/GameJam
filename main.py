@@ -12,7 +12,6 @@ def main(screen: pygame.display) -> None:
         events()
         p.draw(screen, WIDTH_CENTER, HEIGHT_CENTER, 4)
 
-
         pygame.display.update()
         screen.fill(COLORS['white'])
         
