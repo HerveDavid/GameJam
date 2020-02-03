@@ -6,15 +6,16 @@ from sprite import Sprite
 
 def main(screen: pygame.display) -> None:
 
-    p = Sprite('Assets/RobocopWalk.png', 8, 1)
-
-    i=0
+    p = Sprite('Assets/RobocopWalk.png', 8, 1, 5)
+    x, y = 0, 0
     while RUNNING:
         events()
-        p.draw(screen, i % p.totalCells, WIDTH_CENTER, HEIGHT_CENTER, 5)
-        i += 1
+        p.draw(screen, WIDTH_CENTER, HEIGHT_CENTER, 4)
+
+
         pygame.display.update()
         screen.fill(COLORS['white'])
+        
         pygame.time.Clock().tick(FPS)
 
 

@@ -2,14 +2,16 @@ import pygame
 
 class Sprite():
 
-    def __init__(self, filename: str, cols, rows):
+    def __init__(self, filename: str, cols, rows, scale=1):
 
         self.sheet = pygame.image.load(filename).convert()
         self.sheet.set_colorkey(self.sheet.get_at((0,0)))
 
-        self.scale = 1
+        self.scale = scale
         self.sheet = pygame.transform.scale(self.sheet,
-                                            (self.sheet.get_rect().width * self.scale, self.sheet.get_rect().height * self.scale ))
+                                            (int(self.sheet.get_rect().width * self.scale),
+                                             int(self.sheet.get_rect().height * self.scale ))
+                                            )
 
         self.cols = cols
         self.rows = rows
@@ -27,5 +29,11 @@ class Sprite():
             (0, -h), (-center_w, -h), (-h, -w)
         ]
 
-    def draw(self, surface, cellIndex, x, y, handle=0):
-        surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), pygame.Rect(self.cells[cellIndex]) )
+        self.cellIndex = 0
+
+    def draw(self, surface, x, y, handle=0):
+        if self.totalCells > 1:
+            self.cellIndex = (self.cellIndex + 1) % self.totalCells
+            surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), pygame.Rect(self.cells[self.cellIndex]))
+        else:
+            surface.blit(self.sheet, (x + self.handle[handle][0], y + self.handle[handle][1]), pygame.Rect(self.cells[0]))
