@@ -1,19 +1,18 @@
 import pygame
-<<<<<<< HEAD
-
-=======
 from utilitaries import *
 from colors import COLORS
 from sprite import Sprite
+from player import Player
 
 
 def main(screen: pygame.display) -> None:
 
     p = Sprite('Assets/RobocopWalk.png', 8, 1, 5)
+    player = Player(p, 0, 0)
     x, y = 0, 0
     while RUNNING:
         events()
-        p.draw(screen, WIDTH_CENTER, HEIGHT_CENTER, 4)
+        player.draw(screen)
 
         pygame.display.update()
         screen.fill(COLORS['white'])
@@ -25,4 +24,3 @@ if __name__ == '__main__':
 
     screen = init()
     main(screen)
->>>>>>> davidtuto
