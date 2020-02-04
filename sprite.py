@@ -2,10 +2,11 @@ import pygame
 
 class Sprite():
 
-    def __init__(self, filename: str, cols, rows, scale=1, selection=None):
+    def __init__(self, filename: str, cols, rows, scale=1, selection=None, colorkey=True):
 
         self.sheet = pygame.image.load(filename).convert()
-        self.sheet.set_colorkey(self.sheet.get_at((0,0)))
+        if colorkey:
+            self.sheet.set_colorkey(self.sheet.get_at((0,0)))
 
         self.scale = scale
         self.sheet = pygame.transform.scale(self.sheet,

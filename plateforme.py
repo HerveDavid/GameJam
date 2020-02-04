@@ -5,6 +5,8 @@ class Platform():
 
     def __init__(self, x, y, width):
 
+        self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1,colorkey=False)
+
         self.x = x
         self.y = y
         self.width = self.x + width
@@ -19,7 +21,7 @@ class Platform():
             return None
 
     def draw(self, screen):
-
+        self.sprite.draw(screen, self.x, self.y, handle=1)
         pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 2)
 
 class Platforms():
@@ -43,17 +45,17 @@ class Platforms():
             if t:
                 player.currentPlatform = t
                 player.y = t.y
-                player.falling = False
-                # return True
+                # player.falling = False
+                return True
 
-        # return False
+        return False
 
     def draw(self, screen, player):
 
         for platform in self.containers:
             platform.draw(screen)
 
-        self.collision(player)
+        player.falling = not self.collision(player)
 
 
         player.draw(screen)
