@@ -12,7 +12,7 @@ class Platform():
     def test(self, player):
 
         if player.x < self.x or player.x > self.width: return None
-        if player.y <= self.y: return self
+        if player.y <= self.y and player.y + player.velocity >= self.y: return self
         return None
 
     def draw(self, screen):
