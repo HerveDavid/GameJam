@@ -12,7 +12,8 @@ class Platform():
     def test(self, player):
 
         if player.x < self.x or player.x > self.width: return None
-        if player.y <= self.y and player.y + player.velocity >= self.y: return self
+        if player.y <= self.y and player.y + player.velocity >= self.y\
+                and (player.x > self.x or player.x < self.width): return self
         return None
 
     def draw(self, screen):
@@ -31,7 +32,7 @@ class Platforms():
 
     def collision(self, player):
 
-        if not player.falling: return False
+        # if not player.falling: return "Chute"
 
         for platform in self.containers:
 
@@ -40,7 +41,6 @@ class Platforms():
             if t:
                 player.currentPlatform = t
                 player.y = t.y
-                player.falling = False
                 return True
 
         return False
@@ -50,7 +50,7 @@ class Platforms():
         for platform in self.containers:
             platform.draw(screen)
 
-        print(self.collision(player))
+        player.falling = not self.collision(player)
 
 
         player.draw(screen)

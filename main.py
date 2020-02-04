@@ -22,7 +22,6 @@ def main(screen: pygame.display) -> None:
         events()
 
         plateformes.draw(screen, player)
-        # player.draw(screen)
 
         pygame.display.update()
         screen.fill(COLORS['white'])

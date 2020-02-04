@@ -56,12 +56,12 @@ class Player():
         self.x += self.xVelocity
 
         if self.currentPlatorm:
-            if self.currentPlatorm.x > self.x :
+            if not self.currentPlatorm.test(self) :
                 self.falling = True
                 self.currentPlatorm = None
 
         if self.jumping:
-            self.y += self.jumpRange[self.jumpCounter]
+            self.y += self.jumpRange[self.jumpCounter] * 3
             self.jumpCounter += 1
             if self.jumpCounter >= len(self.jumpRange) - 1:
                 self.jumping = False
