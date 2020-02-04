@@ -1,10 +1,9 @@
 import pygame
 from utilitaries import *
 from colors import COLORS
-# from sprite import Sprite
 from player import Player
-# from ennemy import Ennemy
-# from bouton import Bouton
+from plateforme import *
+
 
 import pygame
 
@@ -16,14 +15,20 @@ pygame.mixer.music.play(-1)
 
 def main(screen: pygame.display) -> None:
 
-    player = Player(300, 300)
-    # ennemy = Ennemy(300,300)
-    # button = Button(300,300)
+    player = Player(300, 200)
+    p1 = Platform(300, 300, 100)
+    p2 = Platform(420, 300, 100)
+    p3 = Platform(250, 400, 100)
+
+    plateformes = Platforms()
+    plateformes.append(p1)
+    plateformes.append(p2)
+    plateformes.append(p3)
+
     while RUNNING:
         events()
-        # ennemy.draw(screen)
-        player.draw(screen)
-        # button.draw(screen)
+
+        plateformes.draw(screen, player)
 
         pygame.display.update()
         screen.fill(COLORS['white'])
