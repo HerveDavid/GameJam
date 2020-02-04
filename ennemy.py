@@ -7,7 +7,9 @@ class Ennemy():
 
         #liste des sprite d'animation des ennemis
         self.sprites ={
-            'idle': Sprite('Assets/Ennemy/idle.png', 3, 1)
+            'idle': Sprite('Assets/Minotaur/min_idle_light.png', 10, 1),
+            'idleNo': Sprite('Assets/Minotaur/min_idle_NOlight.png', 10, 1),
+            'walks': Sprite('Assets/Minotaur/min_walking.png', 10, 1),
         }
 
         #position de l'ennemi
@@ -24,7 +26,7 @@ class Ennemy():
 
     # Procédure pour le dessin de l'ennemi
     def draw(self, surface):
-        self.sprites['idle'].draw(surface, self.x, self.y, self.flip)
+        self.sprites['walks'].draw(surface, self.x, self.y, self.flip)
 
     # l'ennemi se déplace
     def walk(self, surface, flip):
