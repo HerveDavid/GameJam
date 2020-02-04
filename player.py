@@ -69,9 +69,9 @@ class Player():
                 self.currentPlatorm = None
 
         if self.jumping:
-            self.y += self.jumpRange[self.jumpCounter] * 3
+            self.y += self.jumpRange[self.jumpCounter] * 5
             self.jumpCounter += 1
-            if self.jumpCounter >= len(self.jumpRange) - 1:
+            if self.jumpCounter >= len(self.jumpRange) /2:
                 self.jumping = False
                 self.falling = True
         elif self.falling and not self.currentPlatorm:
