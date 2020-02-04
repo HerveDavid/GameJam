@@ -2,19 +2,24 @@ import pygame
 from utilitaries import *
 from colors import COLORS
 from player import Player
-from ennemy import Ennemy
+from ennemy import *
 from game import Game
 from  maps import *
 
 def main(screen: pygame.display) -> None:
 
     player = Player(300, 300)
-    game = Game(etage1, player)
+    minotaur = Minotaur(300, 300, (200, 400))
+    enemies = []
+    enemies.append(minotaur)
+    game = Game(etage1, player, enemies)
     while RUNNING:
         events()
-        # ennemy.draw(screen)
+        # minotaur.draw(screen)
         # player.draw(screen)
         game.display(screen)
+
+
         pygame.display.update()
         screen.fill(COLORS['white'])
         

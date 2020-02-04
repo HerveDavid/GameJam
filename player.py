@@ -29,7 +29,7 @@ class Player():
     # Définir la position du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y
-        self.xVelocity  = 20
+        self.xVelocity  = 0
         self.jumpCounter = 0
         self.jumping = False
         self.falling = True
