@@ -1,5 +1,6 @@
 import pygame
 from sprite import Sprite
+from plateforme import Platform
 
 class Player():
 
@@ -22,13 +23,16 @@ class Player():
         # Flip
         self.flip = False
 
+        # Current plateforme
+        self.currentPlatorm = None
+
     # Définir la position du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y
         self.xVelocity  = 20
         self.jumpCounter = 0
         self.jumping = False
-        self.falling = False
+        self.falling = True
 
     # Actions du joueur
     def events(self):
@@ -48,7 +52,13 @@ class Player():
 
     # Déplacement du joueur
     def move(self):
+
         self.x += self.xVelocity
+
+        if self.currentPlatorm:
+            if self.currentPlatorm.x > self.x :
+                self.falling = True
+                self.currentPlatorm = None
 
         if self.jumping:
             self.y += self.jumpRange[self.jumpCounter]
@@ -56,12 +66,8 @@ class Player():
             if self.jumpCounter >= len(self.jumpRange) - 1:
                 self.jumping = False
                 self.falling = True
-        elif self.falling:
-            if self.y < 300:
-                self.y = 300
-                self.falling = False
-            else:
-                self.y += self.velocity
+        elif self.falling and not self.currentPlatorm:
+            self.y += 20
 
     def draw(self, fenetre):
         self.events()
