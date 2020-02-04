@@ -7,75 +7,70 @@ class Player():
 
         # Listes des sprites pour l'animation
         self.sprites = {
-            'run': Sprite('Assets/Player/run.png', 8, 1)
+            'run': Sprite('Assets/Player/run.png', 8, 1),
+            'jump': Sprite('Assets/Player/run.png', 8, 1),
+            'idle': Sprite('Assets/Player/idle.png', 8, 1)
         }
 
-        # Position du player
-        self.x, self.y = x, y
+        # Initialisation position
+        self.setLocation(x, y)
 
-        # Vistesse du joueur
+        # Vitesse du joueur
         self.velocity = 20
+        self.jumpRange = [-10, -6, -5, -4,  1, 4, 5, 6, 10]
 
-        # Changement de coté du sprite
+        # Flip
         self.flip = False
 
-        # Saut
+    # Définir la position du joueur
+    def setLocation(self, x, y):
+        self.x, self.y = x, y
+        self.xVelocity  = 20
+        self.jumpCounter = 0
         self.jumping = False
+        self.falling = False
 
-        # courbe du saut
-        self.arcJump = [-10, -6, -5, -4,  1, 4, 5, 6, 10]
-        # self.arcJump = [i for i in self.arcJump]
-        self.arcJumpIndex = 0
+    # Actions du joueur
+    def events(self):
+        keys = pygame.key.get_pressed()
 
-        # Plateforme
-        self.platform = (x, y)
+        if keys[pygame.K_LEFT]:
+            self.xVelocity = -self.velocity
+            self.flip = True
+        elif keys[pygame.K_RIGHT]:
+            self.xVelocity = self.velocity
+            self.flip = False
+        else: self.xVelocity = 0
 
-    # Procédure pour le dessin du joueur
-    def draw(self, surface):
+        if keys[pygame.K_SPACE] and not self.jumping and not self.falling:
+            self.jumping = True
+            self.jumpCounter = 0
+
+    # Déplacement du joueur
+    def move(self):
+        self.x += self.xVelocity
+
         if self.jumping:
-            self.jump(surface)
-        else:
-            keys = pygame.key.get_pressed()
-
-            # Joeur fait un jump à gauche ou droite
-            if keys[pygame.K_SPACE]:
-                self.flip = keys[pygame.K_LEFT]
-                self.jumping = True
-
-            # Joueur va à droite ou droite en marchant
-            elif keys[pygame.K_LEFT] or keys[pygame.K_RIGHT]:
-                self.walk(surface, keys[pygame.K_LEFT])
-
+            self.y += self.jumpRange[self.jumpCounter]
+            self.jumpCounter += 1
+            if self.jumpCounter >= len(self.jumpRange) - 1:
+                self.jumping = False
+                self.falling = True
+        elif self.falling:
+            if self.y < 300:
+                self.y = 300
+                self.falling = False
             else:
-                self.sprites['run'].draw(surface, self.x, self.y, self.flip)
+                self.y += self.velocity
 
-    # Le joueur marche
-    def walk(self, surface, flip):
+    def draw(self, fenetre):
+        self.events()
+        self.move()
 
-        self.flip = flip
-
-        if flip:
-            self.x -= self.velocity
+        if self.xVelocity == 0:
+            self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
+        elif self.jumping or self.flip:
+            self.sprites['jump'].draw(fenetre, self.x, self.y, self.flip)
         else:
-            self.x += self.velocity
-
-        self.sprites['run'].draw(surface, self.x, self.y, self.flip)
-
-    # Le joeur saute
-    def jump(self, surface):
-
-        self.y += self.arcJump[self.arcJumpIndex]
-        self.arcJumpIndex += 1
-
-        self.x = self.x - self.velocity if self.flip else self.x + self.velocity
-
-        if self.arcJumpIndex >= len(self.arcJump) - 1:
-            self.arcJumpIndex = len(self.arcJump) - 1
-
-        if self.y > self.platform[1]:
-            self.y = self.platform[1]
-            self.jumping = False
-            self.arcJumpIndex = 0
-
-        self.sprites['run'].draw(surface, self.x, self.y, self.flip)
+            self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
 
