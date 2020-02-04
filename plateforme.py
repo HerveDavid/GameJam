@@ -3,13 +3,23 @@ from sprite import Sprite
 
 class Platform():
 
-    def __init__(self, x, y, width):
+    def __init__(self, x, y, type):
+        if type == 'M':
+            self.sprite = Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False)
+        elif type == 'MC':
+            self.sprite = Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False)
+        elif type == 'PS':
+            self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
+        elif type == 'SS':
+            self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
+        elif type == 'SSC':
+            self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
 
-        self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1,colorkey=False)
+
 
         self.x = x
         self.y = y
-        self.width = self.x + width
+        self.width = x + self.sprite.cellWidth
 
     def test(self, player):
 
@@ -21,7 +31,7 @@ class Platform():
             return None
 
     def draw(self, screen):
-        self.sprite.draw(screen, self.x, self.y, handle=1)
+        self.sprite.draw(screen, self.x, self.y, handle=0)
         pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 2)
 
 class Platforms():

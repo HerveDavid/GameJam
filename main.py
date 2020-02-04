@@ -16,14 +16,14 @@ pygame.mixer.music.play(-1)
 def main(screen: pygame.display) -> None:
 
     player = Player(300, 200)
-    p1 = Platform(300, 300, 100)
-    p2 = Platform(420, 300, 100)
-    p3 = Platform(250, 400, 100)
+    p1 = Platform(300, 300, 'SSC')
+    # p2 = Platform(420, 300, 'MC')
+    # p3 = Platform(250, 400, 'SSC')
 
     plateformes = Platforms()
     plateformes.append(p1)
-    plateformes.append(p2)
-    plateformes.append(p3)
+    # plateformes.append(p2)
+    # plateformes.append(p3)
 
     while RUNNING:
         events()
