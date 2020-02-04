@@ -6,6 +6,13 @@ from player import Player
 # from ennemy import Ennemy
 # from bouton import Bouton
 
+import pygame
+
+file = 'Audio/1.mp3'
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load(file)
+pygame.mixer.music.play()
 
 def main(screen: pygame.display) -> None:
 
