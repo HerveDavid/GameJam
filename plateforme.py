@@ -32,7 +32,7 @@ class Platform():
 
     def draw(self, screen):
         self.sprite.draw(screen, self.x, self.y, handle=0)
-        pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 2)
+        # pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 2)
 
 class Platforms():
 
@@ -60,12 +60,8 @@ class Platforms():
 
         return False
 
-    def draw(self, screen, player):
+    def draw(self, screen):
 
         for platform in self.containers:
             platform.draw(screen)
 
-        player.falling = not self.collision(player)
-
-
-        player.draw(screen)
