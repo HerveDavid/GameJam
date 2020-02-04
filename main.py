@@ -6,6 +6,7 @@ from player import Player
 # from ennemy import Ennemy
 # from bouton import Bouton
 
+audio = 'ok'
 
 def main(screen: pygame.display) -> None:
 
