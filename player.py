@@ -9,7 +9,7 @@ class Player():
         self.sprites = {
             'run': Sprite('Assets/Player/run.png', 8, 1),
             'jump': Sprite('Assets/Player/run.png', 8, 1),
-            'idle': Sprite('Assets/Player/idle.png', 4, 1)
+            'idle': Sprite('Assets/Player/idle.png', 8, 1)
         }
 
         # Initialisation position
