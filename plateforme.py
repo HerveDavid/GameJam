@@ -1,6 +1,5 @@
 import pygame
 from sprite import Sprite
-from player import Player
 
 class Platform():
 
@@ -10,11 +9,18 @@ class Platform():
         self.y = y
         self.width = self.x + width
 
-    def test(self, player: Player):
+    def test(self, player):
 
-        if player.x < self.x or player.x > self.width: None
-        if player.y <= self.y and player.y + max(player.arcJump) >= self.y: return self
-        return None
+        if player.x < self.x or player.x > self.width:
+            return None
+        elif player.y <= self.y and player.y + player.velocity >= self.y:
+            return self
+        else:
+            return None
+
+    def draw(self, screen):
+
+        pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 2)
 
 class Platforms():
 
@@ -26,9 +32,10 @@ class Platforms():
 
         self.containers.append(platform)
 
-    def collision(self, player: Player):
+    def collision(self, player):
 
-        if not player.falling: return False
+        # if player.falling:
+
         for platform in self.containers:
 
             t = platform.test(player)
@@ -37,6 +44,16 @@ class Platforms():
                 player.currentPlatform = t
                 player.y = t.y
                 player.falling = False
-                return True
+                # return True
 
-        return False
+        # return False
+
+    def draw(self, screen, player):
+
+        for platform in self.containers:
+            platform.draw(screen)
+
+        self.collision(player)
+
+
+        player.draw(screen)
