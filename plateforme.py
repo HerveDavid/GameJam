@@ -1,24 +1,40 @@
-import pygame
 from sprite import Sprite
+import random as rd
 
 class Platform():
 
     def __init__(self, x, y, type):
-        if type == 'M':
+
+        if type == 1:
             self.sprite = Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False)
-        elif type == 'MC':
+        elif type == 2:
             self.sprite = Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False)
-        elif type == 'PS':
+        elif type == 3:
             self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
-        elif type == 'SS':
+        elif type == 4:
             self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
-        elif type == 'SSC':
+        elif type == 5:
             self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
 
 
 
         self.x = x
         self.y = y
+
+        self.anime = type in [3], type
+        if self.anime == (True, 3):
+            self.vectAle = []
+
+            r_nb = rd.randrange(0, 5, 1)
+
+            if r_nb:
+                for i in range(r_nb):
+                    if i > r_nb / 2:
+                        self.vectAle.append(i)
+                    else:
+                        self.vectAle.append(-i)
+
+            self.index = 0
         self.width = x + self.sprite.cellWidth
 
     def test(self, player):
@@ -31,8 +47,12 @@ class Platform():
             return None
 
     def draw(self, screen):
+        # if self.anime == (True, 3) and self.vectAle:
+        #     self.index = (self.index+1) % len(self.vectAle)
+        #     self.y += self.vectAle[self.index]
+
         self.sprite.draw(screen, self.x, self.y, handle=0)
-        # pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 2)
+        # pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 1)
 
 class Platforms():
 

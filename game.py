@@ -19,7 +19,7 @@ class Game():
 
                 id = self.map[y][i]
 
-                if isinstance(id, str):
+                if id:
 
                     self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
 
@@ -27,7 +27,9 @@ class Game():
     def display(self, screen):
 
         self.platforms.draw(screen)
-
         self.player.falling = not self.platforms.collision(self.player)
 
         self.player.draw(screen)
+
+        if self.player.y >= HEIGHT and self.player.falling:
+            self.player.y = 300

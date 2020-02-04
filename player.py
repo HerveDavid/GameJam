@@ -18,7 +18,7 @@ class Player():
 
         # Vitesse du joueur
         self.velocity = 20
-        self.jumpRange = [-10, -6, -5, -4,  1, 4, 5, 6, 10]
+        self.jumpRange = [-8, -6, -3, -2, 2, 3, 6, 8]
 
         # Flip
         self.flip = False
