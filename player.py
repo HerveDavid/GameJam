@@ -5,27 +5,77 @@ class Player():
 
     def __init__(self, x, y):
 
-        self.sprite = Sprite('Assets/RobocopWalk.png', 8, 1, 5)
+        # Listes des sprites pour l'animation
+        self.sprites = {
+            'run': Sprite('Assets/Player/run.png', 8, 1)
+        }
+
+        # Position du player
         self.x, self.y = x, y
 
+        # Vistesse du joueur
+        self.velocity = 20
+
+        # Changement de coté du sprite
+        self.flip = False
+
+        # Saut
+        self.jumping = False
+
+        # courbe du saut
+        self.arcJump = [-10, -6, -5, -4,  1, 4, 5, 6, 10]
+        # self.arcJump = [i for i in self.arcJump]
+        self.arcJumpIndex = 0
+
+        # Plateforme
+        self.platform = (x, y)
+
+    # Procédure pour le dessin du joueur
     def draw(self, surface):
-        if self.move() == 1:
-            self.sprite.draw(surface, self.x, self.y)
-        elif self.move() == 2:
-            self.sprite.draw(surface, self.x, self.y, True)
+        if self.jumping:
+            self.jump(surface)
         else:
-            self.sprite.draw(surface, self.x, self.y)
+            keys = pygame.key.get_pressed()
 
+            # Joeur fait un jump à gauche ou droite
+            if keys[pygame.K_SPACE]:
+                self.flip = keys[pygame.K_LEFT]
+                self.jumping = True
 
-    def move(self):
-        keys = pygame.key.get_pressed()
+            # Joueur va à droite ou droite en marchant
+            elif keys[pygame.K_LEFT] or keys[pygame.K_RIGHT]:
+                self.walk(surface, keys[pygame.K_LEFT])
 
-        if keys[pygame.K_RIGHT]:
-            self.x += 10
-            return 1
+            else:
+                self.sprites['run'].draw(surface, self.x, self.y, self.flip)
 
-        if keys[pygame.K_LEFT]:
-            self.x -= 10
-            return 2
+    # Le joueur marche
+    def walk(self, surface, flip):
 
-        return 0
+        self.flip = flip
+
+        if flip:
+            self.x -= self.velocity
+        else:
+            self.x += self.velocity
+
+        self.sprites['run'].draw(surface, self.x, self.y, self.flip)
+
+    # Le joeur saute
+    def jump(self, surface):
+
+        self.y += self.arcJump[self.arcJumpIndex]
+        self.arcJumpIndex += 1
+
+        self.x = self.x - self.velocity if self.flip else self.x + self.velocity
+
+        if self.arcJumpIndex >= len(self.arcJump) - 1:
+            self.arcJumpIndex = len(self.arcJump) - 1
+
+        if self.y > self.platform[1]:
+            self.y = self.platform[1]
+            self.jumping = False
+            self.arcJumpIndex = 0
+
+        self.sprites['run'].draw(surface, self.x, self.y, self.flip)
+

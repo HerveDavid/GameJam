@@ -4,7 +4,7 @@ import sys
 # Constantes
 SIZE = WIDTH, HEIGHT= 1024, 768
 WIDTH_CENTER, HEIGHT_CENTER = int(WIDTH / 2), int(HEIGHT / 2)
-FPS = 5
+FPS = 10
 RUNNING = True
 
 # Fonctions
