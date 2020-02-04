@@ -1,20 +1,26 @@
 from sprite import Sprite
+import pygame
 import random as rd
+
+
 
 class Platform():
 
     def __init__(self, x, y, type):
 
-        if type == 1:
-            self.sprite = Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False)
-        elif type == 2:
-            self.sprite = Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False)
-        elif type == 3:
-            self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
-        elif type == 4:
-            self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
-        elif type == 5:
-            self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
+        self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
+        self.mask = pygame.mask.from_surface(self.sprite.sheet)
+        # self.sprite_mask = pygame.mask.from_surface(self.sprite)
+        # if type == 1:
+        #     # self.sprite = Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False)
+        # elif type == 2:
+        #     # self.sprite = Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False)
+        # elif type == 3:
+        #     # self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
+        # elif type == 4:
+        #     # self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
+        # elif type == 5:
+        #     # self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
 
 
 
@@ -35,7 +41,7 @@ class Platform():
                         self.vectAle.append(-i)
 
             self.index = 0
-        self.width = x + self.sprite.cellWidth
+        self.width = self.x + self.sprite.cellWidth
 
     def test(self, player):
 
@@ -52,7 +58,7 @@ class Platform():
         #     self.y += self.vectAle[self.index]
 
         self.sprite.draw(screen, self.x, self.y, handle=0)
-        # pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 1)
+        pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 1)
 
 class Platforms():
 
@@ -65,8 +71,6 @@ class Platforms():
         self.containers.append(platform)
 
     def collision(self, player):
-
-        # if player.falling:
 
         for platform in self.containers:
 

@@ -13,6 +13,8 @@ class Player():
             'idle': Sprite('Assets/Player/idle.png', 4, 1)
         }
 
+        self.mask = pygame.mask.from_surface(self.sprites['idle'].sheet)
+
         # Initialisation position
         self.setLocation(x, y)
 

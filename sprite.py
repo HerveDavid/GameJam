@@ -4,8 +4,9 @@ class Sprite():
 
     def __init__(self, filename: str, cols, rows, scale=1, selection=None, colorkey=True):
 
-        self.sheet = pygame.image.load(filename).convert()
+        self.sheet = pygame.image.load(filename)
         if colorkey:
+            self.sheet = pygame.image.load(filename).convert()
             self.sheet.set_colorkey(self.sheet.get_at((0,0)))
 
         self.scale = scale
