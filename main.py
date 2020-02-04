@@ -14,12 +14,13 @@ pygame.mixer.music.load(file)
 pygame.mixer.music.play(-1)
 
 def main(screen: pygame.display) -> None:
-
+    # bg = pygame.image.load('Assets/Textures/JoJo.png')
     player = Player(300, 200)
 
     g = Game(etage1, player)
 
     while RUNNING:
+        # screen.blit(bg, (0, 0))
         events()
 
         # plateformes.draw(screen, player)

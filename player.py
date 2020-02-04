@@ -28,6 +28,9 @@ class Player():
         # Current plateforme
         self.currentPlatorm = None
 
+        # hint
+        self.hint = False
+
     # Définir la position du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y
@@ -51,6 +54,9 @@ class Player():
         if keys[pygame.K_SPACE] and not self.jumping and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
+
+        if keys[pygame.K_UP] and self.xVelocity == 0:
+            self.hint = True
 
     # Déplacement du joueur
     def move(self):

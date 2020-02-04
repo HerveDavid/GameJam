@@ -8,19 +8,16 @@ class Platform():
 
     def __init__(self, x, y, type):
 
-        self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
-        self.mask = pygame.mask.from_surface(self.sprite.sheet)
-        # self.sprite_mask = pygame.mask.from_surface(self.sprite)
-        # if type == 1:
-        #     # self.sprite = Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False)
-        # elif type == 2:
-        #     # self.sprite = Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False)
-        # elif type == 3:
-        #     # self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
-        # elif type == 4:
-        #     # self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
-        # elif type == 5:
-        #     # self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
+        if type == 1:
+            self.sprite = Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False)
+        elif type == 2:
+            self.sprite = Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False)
+        elif type == 3:
+            self.sprite = Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
+        elif type == 4:
+            self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
+        elif type == 5:
+            self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
 
 
 

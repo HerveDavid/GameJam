@@ -27,6 +27,7 @@ class Game():
     def display(self, screen):
 
         self.platforms.draw(screen)
+
         self.player.falling = not self.platforms.collision(self.player)
 
         self.player.draw(screen)
