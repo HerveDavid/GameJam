@@ -18,6 +18,7 @@ black = pygame.color.Color('#000000')
 font = pygame.font.Font(None, 60)
 text = font.render('A Bout De Souffle', True, white)
 
+# Menu principal
 def start_menu(screen):
 
     start = True
@@ -54,15 +55,19 @@ def start_menu(screen):
                 if action is not None:
                     return action
 
+def display_credits(screen):
+    print("Bonjour c'est nous on a fait le jeu")
+
 
 def main(screen: pygame.display) -> None:
 
     player = Player(WIDTH_CENTER, 0)
 
-    game = Game(etage2, (), player, enemies2)
+    game = Game(etage1, (), player, enemies2)
     clock = pygame.time.Clock()
-    game.initMixer()
 
+    #Sound
+    game.initMixer()
     sound_channel_player = pygame.mixer.Channel(0)
     sound_channel_ennemy = pygame.mixer.Channel(1)
     sound_channel_ambient = pygame.mixer.Channel(2)
