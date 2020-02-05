@@ -83,17 +83,16 @@ class Game():
             if random.randint(0, 30) == 10:
                 channel.play(random_sound)
 
-    def playMixerPlayer(self, channel, sounds, sound_flute, sound_step):
+    def playMixerPlayer(self, channel, sound_jump, sound_flute, sound_step):
         channel.set_volume(1.7)
-        random_sound = random.choice(sounds)
         if self.player.jumping:
             if not channel.get_busy():
-                channel.play(random_sound)
+                if not self.player.falling:
+                    channel.play(sound_jump)
         if self.player.blow:
             if not channel.get_busy():
                 channel.set_volume(0.3)
                 channel.play(sound_flute)
-
         if self.player.xVelocity != 0 and self.player.falling == False and self.player.jumping == False:
             if not channel.get_busy():
                 channel.set_volume(0.7)
