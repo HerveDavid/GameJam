@@ -17,6 +17,8 @@ class Game():
 
     def load(self):
 
+        self.background = Sprite('Assets/Textures/background_test.png', 1, 1)
+
         for y in range(len(self.map)):
 
             for i in range(len(self.map[y])):
@@ -30,6 +32,8 @@ class Game():
                         self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
 
     def display(self, screen):
+
+        self.background.draw(screen, 0, 0, handle=0)
 
         self.platforms.draw(screen)
 

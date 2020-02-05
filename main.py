@@ -49,6 +49,7 @@ def main(screen: pygame.display) -> None:
     sounds_ambient.append(sound_blow)
 
     while RUNNING:
+
         events()
 
         game.display(screen)
