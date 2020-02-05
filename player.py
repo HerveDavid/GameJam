@@ -26,11 +26,7 @@ class Player():
         # Current plateforme
         self.currentPlatorm = None
 
-        self.hitbox = pygame.rect.Rect( self.x + self.sprites['jump'].handle[0][0],
-                                        self.y + self.sprites['jump'].handle[0][1],
-                                        self.sprites['jump'].cells[0][2],
-                                        self.sprites['jump'].cells[0][3]
-                                        )
+        self.hitbox = None
 
     # Définir la position du joueur
     def setLocation(self, x, y):

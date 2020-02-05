@@ -32,13 +32,18 @@ class Game():
         self.player.falling = not self.platforms.collision(self.player)
 
         for e in self.enemies:
-
             e.draw(screen)
+            if e.hitbox and self.player.hitbox:
+                if e.hitbox.colliderect(self.player.hitbox):
+                    self.playerLose()
 
 
         self.player.draw(screen)
 
         if self.player.y >= HEIGHT and self.player.falling:
-            self.player.y = 0
-            self.player.x = WIDTH_CENTER
-            self.score = 0
+            self.playerLose()
+
+    def playerLose(self):
+        self.player.y = 0
+        self.player.x = WIDTH_CENTER
+        self.score = 0
