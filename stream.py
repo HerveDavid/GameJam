@@ -1,6 +1,11 @@
 from utilitaries import *
 from sprite import Sprite
 
+class Wind(Sprite):
+
+    def __init__(self):
+
+        super(Wind, self).__init__('Assets/Wind/vent.png', 10, 1)
 
 class Stream:
 
@@ -10,7 +15,7 @@ class Stream:
         self.setStream(x, y,dir)
 
         # Sprite du vent
-        self.windSprite = Sprite('Assets/Wind/vent.png', 10, 1)
+        self.windSprite = Wind()
 
     def setStream(self,x,y,dir):
         self.x, self.y, self.dir= x, y,dir
