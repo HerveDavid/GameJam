@@ -60,6 +60,8 @@ class Game():
         pygame.mixer.init()
         pygame.mixer.music.load("Audio/1.mp3")
         pygame.mixer.music.play(-1)
+        pygame.mixer.music.load("Audio/Fx/wind.mp3")
+        pygame.mixer.music.play(-1)
 
     def playMixerEnnemy(self, channel, sounds):
         random_sound = random.choice(sounds)
