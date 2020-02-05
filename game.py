@@ -57,6 +57,7 @@ class Game():
 
         if self.player.stream.dir != 0:
             self.player.stream.draw(screen, self.player.flip)
+            self.player.stream.fear(self.enemies)
 
         self.player.draw(screen)
 
