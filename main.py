@@ -14,10 +14,10 @@ def main(screen: pygame.display) -> None:
     minotaur2 = Minotaur(7 * WIDTH_CELL, (NB_HEIGTH_CELL -1)*HEIGHT_CELL, 7 * WIDTH_CELL, 7 * WIDTH_CELL + 3 * WIDTH_CELL)
 
     enemies = []
-    enemies.append(minotaur)
-    enemies.append(minotaur2)
+    # enemies.append(minotaur)
+    # enemies.append(minotaur2)
 
-    game = Game(etage1, player, enemies)
+    game = Game(test, player, enemies)
     clock = pygame.time.Clock()
     game.initMixer()
 

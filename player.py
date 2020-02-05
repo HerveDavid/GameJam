@@ -81,6 +81,7 @@ class Player():
         if keys[pygame.K_z] and not self.jumping and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
+            self.blow = False
 
         elif keys[pygame.K_DOWN] and self.xVelocity == 0 and not self.jumping and not self.falling:
             self.setStream(0)
