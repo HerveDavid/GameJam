@@ -6,6 +6,13 @@ from ennemy import *
 from game import Game
 from  maps import *
 
+# Audio
+file = 'Audio/1.mp3'
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load(file)
+pygame.mixer.music.play(-1)
+
 def main(screen: pygame.display) -> None:
 
     player = Player(WIDTH_CENTER, 0)
@@ -26,7 +33,7 @@ def main(screen: pygame.display) -> None:
 
 
         pygame.display.update()
-        screen.fill(COLORS['white'])
+        screen.fill(COLORS['black'])
         
         clock.tick(FPS)
 
