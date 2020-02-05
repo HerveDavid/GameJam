@@ -15,16 +15,16 @@ pygame.mixer.music.load(file)
 
 def main(screen: pygame.display) -> None:
 
-    player = Player(WIDTH_CENTER, 0)
+    player = Player(15 * WIDTH_CELL-20, 10*HEIGHT_CELL)
 
-    minotaur = Minotaur(0, (NB_HEIGTH_CELL -2)*HEIGHT_CELL, 0, 5 * WIDTH_CELL)
+    minotaur = Minotaur(11*WIDTH_CELL+20, 7*HEIGHT_CELL, 9*WIDTH_CELL+20, 9*WIDTH_CELL + 4 * WIDTH_CELL)
     minotaur2 = Minotaur(7 * WIDTH_CELL, (NB_HEIGTH_CELL -1)*HEIGHT_CELL, 7 * WIDTH_CELL, 7 * WIDTH_CELL + 3 * WIDTH_CELL)
 
     enemies = []
     enemies.append(minotaur)
-    # enemies.append(minotaur2)
+    #enemies.append(minotaur2)
 
-    game = Game(etage1, player, enemies)
+    game = Game(etage1, player, enemies1)
     clock = pygame.time.Clock()
     while RUNNING:
         events()

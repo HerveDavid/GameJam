@@ -46,6 +46,6 @@ class Game():
             self.playerLose()
 
     def playerLose(self):
-        self.player.y = 0
-        self.player.x = WIDTH_CENTER
+        self.player.y = 9*HEIGHT_CELL
+        self.player.x = 10
         self.score = 0
