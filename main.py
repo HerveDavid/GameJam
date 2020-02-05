@@ -42,14 +42,11 @@ def start_menu(screen):
 
 
 
-
 def main(screen: pygame.display) -> None:
 
     player = Player(WIDTH_CENTER, 0)
 
-
-    game = Game(test, fondtest, player, enemiestest)
-
+    game = Game(etage2, (), player, enemies2)
     clock = pygame.time.Clock()
     game.initMixer()
 
@@ -96,5 +93,4 @@ if __name__ == '__main__':
     ans = start_menu(screen)
     if ans == "start":
         main(screen)
-
 
