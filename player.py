@@ -31,6 +31,8 @@ class Player():
 
         self.stream = Stream(self.x,self.y,0)
 
+        self.glissement = False
+
     # Définition du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y
@@ -105,10 +107,12 @@ class Player():
     # Déplacement du joueur
     def move(self):
 
-        if self.xVelocity == 0 and self.stream.dir in [1, 2] and self.stream.y == self.y:
+        if self.xVelocity == 0 and self.stream.dir in [1, 2] and self.stream.y == self.y and self.glissement:
            self.x += -3 if self.stream.dir == 1 else 3
         else:
             self.x += self.xVelocity
+
+        self.glissement = False
 
         if self.currentPlatorm:
             if not self.currentPlatorm.test(self) :
@@ -150,4 +154,5 @@ class Player():
             self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
         else:
             self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
+
 
