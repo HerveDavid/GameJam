@@ -42,7 +42,6 @@ class Game():
                     self.playerLose()
 
         if self.player.stream.dir != 0:
-            print(self.player.stream.dir)
             self.player.stream.draw(screen, self.player.flip)
 
         self.player.draw(screen)

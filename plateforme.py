@@ -5,7 +5,7 @@ from utilitaries import *
 
 class Platform():
 
-    def __init__(self, x, y, type):
+    def __init__(self, x, y, type=1):
 
 
         self.sprite = TUILES[type]
@@ -61,8 +61,9 @@ class Flag(Platform):
 
     def __init__(self, x, y):
 
-        super(Flag, self).__init__(x, y, 1)
+        super(Flag, self).__init__(x, y)
 
+        self.spriteNoWind =  Sprite('Assets/Textures/drapeau.png', 10, 1)
         self.sprite = Sprite('Assets/Textures/drapeau_vent.png', 10, 1)
 
         # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
@@ -73,18 +74,24 @@ class Flag(Platform):
 
         self.flip = True
         self.hitbox = None
+        self.wind = False
 
     def test(self, player):
 
+        self.wind = player.stream.dir in [1, 2]
+        self.flip = player.stream.dir == 1
             # if player.stream:
             #     return self
             # else:
             # print(player.stream.dir)
-            return None
+        return None
 
     def draw(self, screen):
 
-        self.sprite.draw(screen, self.x + 12, self.y +8,flip=True, handle=0)
+        if self.wind:
+            self.sprite.draw(screen, self.x + 12, self.y + 8, flip=self.flip, handle=0)
+        else:
+            self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
 
 
 class Platforms():
