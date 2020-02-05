@@ -9,7 +9,7 @@ class Player():
         # Listes des sprites pour l'animation
         self.sprites = {
             'run': Sprite('Assets/Player/run.png', 8, 1),
-            'jump': Sprite('Assets/Player/run.png', 8, 1),
+            'blow': Sprite('Assets/Player/joueur_souffle.png', 20, 1),
             'idle': Sprite('Assets/Player/idle.png', 4, 1)
         }
 
@@ -35,6 +35,7 @@ class Player():
         self.jumpCounter = 0
         self.jumping = False
         self.falling = True
+        self.blow = False
 
     # Actions du joueur
     def events(self):
@@ -42,15 +43,19 @@ class Player():
 
         if keys[pygame.K_LEFT]:
             self.xVelocity = -self.velocity
+            self.blow = False
             self.flip = True
         elif keys[pygame.K_RIGHT]:
             self.xVelocity = self.velocity
+            self.blow = False
             self.flip = False
         else: self.xVelocity = 0
 
         if keys[pygame.K_SPACE] and not self.jumping and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
+        elif keys[pygame.K_UP] and self.xVelocity == 0 and not self.jumping and not self.falling:
+            self.blow = True
 
     # Déplacement du joueur
     def move(self):
@@ -82,10 +87,12 @@ class Player():
                                        )
         pygame.draw.rect(fenetre, [0, 255, 0], self.hitbox)
 
-        if self.xVelocity == 0:
+        if self.blow:
+            self.sprites['blow'].draw(fenetre, self.x, self.y, self.flip)
+        elif self.xVelocity == 0:
             self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
         elif self.jumping or self.flip:
-            self.sprites['jump'].draw(fenetre, self.x, self.y, self.flip)
+            self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
         else:
             self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
 
