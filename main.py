@@ -17,8 +17,9 @@ def main(screen: pygame.display) -> None:
     # enemies.append(minotaur)
     # enemies.append(minotaur2)
 
-    game = Game(test, player, enemies)
+    game = Game(etage1, player, enemies)
     clock = pygame.time.Clock()
+
     game.initMixer()
 
     sound_channel_player = pygame.mixer.Channel(0)
@@ -50,11 +51,13 @@ def main(screen: pygame.display) -> None:
     sounds_ambient.append(sound_blow)
 
     while RUNNING:
+
         events()
 
         game.display(screen)
         game.playMixerEnnemy(channels[1], sounds_minotaur)
         game.playMixerPlayer(channels[0], sounds_player)
+
         pygame.display.update()
         screen.fill(COLORS['black'])
         

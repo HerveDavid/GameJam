@@ -94,10 +94,13 @@ class Player():
         elif keys[pygame.K_RIGHT] and self.xVelocity == 0 and not self.jumping and not self.falling:
             self.setStream(2)
             self.blow = True
+            self.flip = False
+
 
         elif keys[pygame.K_LEFT] and self.xVelocity == 0 and not self.jumping and not self.falling:
             self.setStream(1)
             self.blow = True
+            self.flip = True
 
     # Déplacement du joueur
     def move(self):

@@ -17,6 +17,8 @@ class Game():
 
     def load(self):
 
+        self.background = Sprite('Assets/Textures/background_test.png', 1, 1)
+
         for y in range(len(self.map)):
 
             for i in range(len(self.map[y])):
@@ -24,12 +26,14 @@ class Game():
                 id = self.map[y][i]
 
                 if id:
-                    if id in range(1, 6):
+                    if id in range(0, len(TUILES)+1):
                         self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
-                    elif id == 8:
+                    elif 8:
                         self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
 
     def display(self, screen):
+
+        self.background.draw(screen, 0, 0, handle=0)
 
         self.platforms.draw(screen)
 
@@ -42,7 +46,6 @@ class Game():
                     self.playerLose()
 
         if self.player.stream.dir != 0:
-            print(self.player.stream.dir)
             self.player.stream.draw(screen, self.player.flip)
 
         self.player.draw(screen)
