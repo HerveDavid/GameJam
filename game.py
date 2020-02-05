@@ -22,8 +22,10 @@ class Game():
                 id = self.map[y][i]
 
                 if id:
-
-                    self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
+                    if id in range(1, 6):
+                        self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
+                    elif id == 8:
+                        self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
 
     def display(self, screen):
 

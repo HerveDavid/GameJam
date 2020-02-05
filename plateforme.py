@@ -2,8 +2,6 @@ from sprite import Sprite
 import pygame
 import random as rd
 
-
-
 class Platform():
 
     def __init__(self, x, y, type):
@@ -18,6 +16,8 @@ class Platform():
             self.sprite = Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False)
         elif type == 5:
             self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
+        elif type == 6:
+            self.sprite = Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False)
 
 
         self.x = x
@@ -26,27 +26,14 @@ class Platform():
 
         self.type = type
 
-        self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
-                                       self.y + self.sprite.handle[0][1],
+        self.hitbox = pygame.rect.Rect(self.x,
+                                       self.y,
                                        self.sprite.cells[0][2] -10,
                                        self.sprite.cells[0][3]
                                        )
 
 
-        self.anime = type in [3], type
-        if self.anime == (True, 3):
-            self.vectAle = []
-
-            r_nb = rd.randrange(0, 5, 1)
-
-            if r_nb:
-                for i in range(r_nb):
-                    if i > r_nb / 2:
-                        self.vectAle.append(i)
-                    else:
-                        self.vectAle.append(-i)
-
-            self.index = 0
+        self.handle = 0
 
     def test(self, player):
 
@@ -59,7 +46,7 @@ class Platform():
 
     def mur(self, player):
         # if player.xVelocity != 0:
-        if self.type != 3 and player.hitbox and self.hitbox.colliderect(player.hitbox):
+        if self.type != 3 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
             # if not player.jumping:
            if not player.flip :
                player.x += -player.xVelocity
@@ -75,7 +62,32 @@ class Platform():
 
         self.sprite.draw(screen, self.x, self.y, handle=0)
         # pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 1)
-        # pygame.draw.rect(screen, [255, 0, 0], self.hitbox)
+
+
+class Flag(Platform):
+
+    def __init__(self, x, y):
+
+        super(Flag, self).__init__(x, y, 1)
+
+        self.sprite = Sprite('Assets/Textures/drapeau_vent.png', 10, 1)
+
+        # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
+        #                                self.y + self.sprite.handle[0][1],
+        #                                self.sprite.cellWidth,
+        #                                self.sprite.cellHeight
+        #                                )
+
+        self.flip = True
+        self.hitbox = None
+
+    def test(self, player):
+            return None
+
+    def draw(self, screen):
+
+        self.sprite.draw(screen, self.x + 12, self.y +8,flip=True, handle=0)
+
 
 class Platforms():
 
