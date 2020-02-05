@@ -6,18 +6,14 @@ from ennemy import *
 from game import Game
 from  maps import *
 
+
 def main(screen: pygame.display) -> None:
 
     player = Player(WIDTH_CENTER, 0)
 
-    minotaur = Minotaur(0, (NB_HEIGTH_CELL -2)*HEIGHT_CELL, 0, 5 * WIDTH_CELL)
-    minotaur2 = Minotaur(7 * WIDTH_CELL, (NB_HEIGTH_CELL -1)*HEIGHT_CELL, 7 * WIDTH_CELL, 7 * WIDTH_CELL + 3 * WIDTH_CELL)
 
-    enemies = []
-    # enemies.append(minotaur)
-    # enemies.append(minotaur2)
+    game = Game(test, fondtest, player, enemiestest)
 
-    game = Game(etage1, fond1, player, enemies)
     clock = pygame.time.Clock()
     game.initMixer()
 
@@ -68,4 +64,5 @@ if __name__ == '__main__':
 
     screen = init()
     main(screen)
+
 
