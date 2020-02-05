@@ -6,18 +6,28 @@ import random
 
 class Game():
 
-    def __init__(self, map: (), player, enemies):
+    def __init__(self, map: (), fond:  {}, player, enemies):
 
         self.map = map
+        self.fond = fond
         self.player = player
         self.enemies = enemies
         self.platforms = Platforms()
+        self.background = Platforms()
         self.load()
         self.score = 0
 
     def load(self):
 
-        self.background = Sprite('Assets/Textures/PixelArt.png', 1, 1, colorkey=False)
+        for y in range(len(self.fond)):
+
+            for i in range(len(self.fond[y])):
+
+                id = self.fond[y][i]
+
+                if id:
+                    self.background.append(Fond(i * WIDTH_CELL, y * HEIGHT_CELL, id))
+
 
         for y in range(len(self.map)):
 
@@ -33,7 +43,7 @@ class Game():
 
     def display(self, screen):
 
-        self.background.draw(screen, 0, 0, handle=0)
+        self.background.draw(screen)
 
         self.platforms.draw(screen)
 

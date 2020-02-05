@@ -24,6 +24,10 @@ TUILES = {
     7: Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
 }
 
+TUILES_FOND = {
+    1: Sprite('Assets/Textures/fond.png', 1, 1, colorkey=False),
+}
+
 # Fonctions
 def events():
     global RUNNING

@@ -17,7 +17,7 @@ def main(screen: pygame.display) -> None:
     # enemies.append(minotaur)
     # enemies.append(minotaur2)
 
-    game = Game(test, player, enemies)
+    game = Game(etage1, fond1, player, enemies)
     clock = pygame.time.Clock()
     game.initMixer()
 

@@ -1,11 +1,13 @@
 from utilitaries import *
 from sprite import Sprite
 
-class Wind(Sprite):
+class Wind():
 
     def __init__(self):
 
-        super(Wind, self).__init__('Assets/Wind/vent.png', 10, 1)
+        self.stream_horizontal = Sprite('Assets/Textures/vent_horizontal.png', 10, 1)
+        self.stream_vertical = Sprite('Assets/Textures/vent.png', 10, 1)
+
 
 class Stream:
 
@@ -23,7 +25,7 @@ class Stream:
     def draw(self, screen, flip):
         if self.dir == 3:
             for y in range(int(NB_HEIGTH_CELL) + 1):
-                self.windSprite.draw(screen, self.x, y * HEIGHT_CELL, flip=flip)
+                self.windSprite.stream_vertical.draw(screen, self.x, y * HEIGHT_CELL, flip=flip)
         else:
             for i in range(int(NB_WIDTH_CELL) + 1):
-                self.windSprite.draw(screen, i * WIDTH_CELL, self.y, flip=flip)
+                self.windSprite.stream_horizontal.draw(screen, i * WIDTH_CELL, self.y, flip=flip)

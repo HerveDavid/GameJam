@@ -93,6 +93,21 @@ class Flag(Platform):
         else:
             self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
 
+class Fond(Platform):
+
+    def __init__(self, x, y, index):
+
+        super(Fond, self).__init__(x, y, index)
+
+        self.sprite = TUILES_FOND[index]
+
+    def test(self, player):
+        None
+
+    def draw(self, screen):
+        self.sprite.draw(screen, self.x, self.y, handle=0)
+
+
 
 class Platforms():
 
