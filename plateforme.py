@@ -23,6 +23,8 @@ class Platform():
 
         self.x = x
         self.y = y
+        self.width = self.x + self.sprite.cellWidth
+
 
         self.anime = type in [3], type
         if self.anime == (True, 3):
@@ -38,13 +40,12 @@ class Platform():
                         self.vectAle.append(-i)
 
             self.index = 0
-        self.width = self.x + self.sprite.cellWidth
 
     def test(self, player):
 
         if player.x < self.x or player.x > self.width:
             return None
-        elif player.y <= self.y and player.y + player.velocity >= self.y:
+        elif player.y <= self.y and player.y + 20 >= self.y:
             return self
         else:
             return None
@@ -76,7 +77,6 @@ class Platforms():
             if t:
                 player.currentPlatform = t
                 player.y = t.y
-                # player.falling = False
                 return True
 
         return False
