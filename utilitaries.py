@@ -1,5 +1,7 @@
 import pygame
 import sys
+
+import colors
 from sprite import Sprite
 
 
@@ -29,7 +31,8 @@ TUILES_FOND = {
     2: Sprite('Assets/Background/fond_trou01.png', 1, 1, colorkey=False),
     3: Sprite('Assets/Background/fond_trou02.png', 1, 1, colorkey=False),
     4: Sprite('Assets/Background/fond_trou03.png', 1, 1, colorkey=False),
-    5: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False)
+    5: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
+    6: Sprite('Assets/Background/fond_light.png', 1, 1, colorkey=False)
 }
 
 # Fonctions
