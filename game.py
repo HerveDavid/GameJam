@@ -95,7 +95,7 @@ class Game():
                 channel.play(sound_flute)
         if self.player.xVelocity != 0 and self.player.falling == False and self.player.jumping == False:
             if not channel.get_busy():
-                channel.set_volume(0.7)
+                channel.set_volume(0.5)
                 channel.play(sound_step)
 
     def playMixerAmbiant(self, channel, sound):

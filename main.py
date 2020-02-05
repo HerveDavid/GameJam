@@ -5,6 +5,42 @@ from player import Player
 from ennemy import *
 from game import Game
 from  maps import *
+import pygame.freetype
+from tkinter import *
+
+pygame.font.init()
+pygame.init()
+
+white = pygame.color.Color('#ffffff')
+red = pygame.color.Color('#ff0000')
+black = pygame.color.Color('#000000')
+
+font = pygame.font.Font(None, 40)
+text = font.render('Jouer', True, white)
+
+def start_menu(screen):
+    start = True
+    while start:
+        pos = pygame.mouse.get_pos()
+        button_width = 240
+        button_height = 80
+        screen.blit(text, (WIDTH/2 - button_width/2,HEIGHT/2 + 50))
+        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 50 and pos[1] <= HEIGHT/2 + 50 + button_height:
+            colour = white
+        else:
+            colour = red
+        #pygame.draw.rect(screen, colour, (20, 20, 260, 100))
+        pygame.draw.rect(screen, colour, (WIDTH/2 - button_width/2, HEIGHT/2 + 50, button_width, button_height))
+        pygame.display.flip()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if colour == white:
+                    return "start"
+
+
 
 def main(screen: pygame.display) -> None:
 
@@ -49,7 +85,6 @@ def main(screen: pygame.display) -> None:
 
     while RUNNING:
         events()
-
         game.display(screen)
         game.playMixerEnnemy(channels[1], sounds_minotaur)
         game.playMixerPlayer(channels[0], sound_player_jump, sound_flute, sound_step)
@@ -62,5 +97,7 @@ def main(screen: pygame.display) -> None:
 if __name__ == '__main__':
 
     screen = init()
-    main(screen)
+    ans = start_menu(screen)
+    if ans == "start":
+        main(screen)
 
