@@ -26,7 +26,7 @@ TUILES = {
 
 TUILES_FOND = {
     1: Sprite('Assets/Background/fond.png', 1, 1, colorkey=False),
-    2: Sprite('Assets/Background/fond-trou01.png', 1, 1, colorkey=False),
+    2: Sprite('Assets/Background/fond_trou01.png', 1, 1, colorkey=False),
     3: Sprite('Assets/Background/fond_trou02.png', 1, 1, colorkey=False)
 }
 
