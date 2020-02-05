@@ -36,6 +36,12 @@ class Game():
 
                 if id:
                     self.background.append(Fond(i * WIDTH_CELL, y * HEIGHT_CELL, id))
+                    if id == 6:
+                        self.startx = int(i * WIDTH_CELL + WIDTH_CELL / 2)
+                        self.starty = int(y * HEIGHT_CELL + 50)
+                    elif id == 7:
+                        self.endx = int(i * WIDTH_CELL)
+                        self.endy = int(y * HEIGHT_CELL)
 
         # Objets
         for y in range(len(self.objets)):
@@ -46,12 +52,7 @@ class Game():
 
                 if id:
                     self.background.append(Objet(i * WIDTH_CELL, y * HEIGHT_CELL, id))
-                    if id == 1:
-                        self.startx = int(i * WIDTH_CELL + WIDTH_CELL / 2)
-                        self.starty = int(y * HEIGHT_CELL + 50)
-                    elif id == 2:
-                        self.endx = int(i * WIDTH_CELL)
-                        self.endy = int(y * HEIGHT_CELL)
+
 
 
         # Map

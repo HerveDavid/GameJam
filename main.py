@@ -63,7 +63,7 @@ def main(screen: pygame.display) -> None:
 
     player = Player(WIDTH_CENTER, 0)
 
-    game = Game(test, background1, objets, player, ())
+    game = Game(test, background1, (), player, ())
     clock = pygame.time.Clock()
 
     #Sound
