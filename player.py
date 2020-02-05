@@ -105,7 +105,10 @@ class Player():
     # Déplacement du joueur
     def move(self):
 
-        self.x += self.xVelocity
+        if self.xVelocity == 0 and self.stream.dir in [1, 2] and self.stream.y == self.y:
+           self.x += -3 if self.stream.dir == 1 else 3
+        else:
+            self.x += self.xVelocity
 
         if self.currentPlatorm:
             if not self.currentPlatorm.test(self) :
