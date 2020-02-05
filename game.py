@@ -36,10 +36,10 @@ class Game():
 
                 if id:
                     self.background.append(Fond(i * WIDTH_CELL, y * HEIGHT_CELL, id))
-                    if id == 6:
+                    if id == 10:
                         self.startx = int(i * WIDTH_CELL + WIDTH_CELL / 2)
                         self.starty = int(y * HEIGHT_CELL + 50)
-                    elif id == 7:
+                    elif id == 11:
                         self.endx = int(i * WIDTH_CELL)
                         self.endy = int(y * HEIGHT_CELL)
 

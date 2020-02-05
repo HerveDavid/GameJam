@@ -30,8 +30,8 @@ TUILES_FOND = {
     3: Sprite('Assets/Background/fond_trou02.png', 1, 1, colorkey=False),
     4: Sprite('Assets/Background/fond_trou03.png', 1, 1, colorkey=False),
     5: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
-    6: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
-    7: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False)
+    10: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
+    11: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False)
 }
 
 OBJETS = {

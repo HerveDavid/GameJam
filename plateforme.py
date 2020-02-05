@@ -94,7 +94,7 @@ class Fond(Platform):
 
     def __init__(self, x, y, index):
 
-        super(Fond, self).__init__(x, y, index)
+        super(Fond, self).__init__(x, y, 1)
 
         self.sprite = TUILES_FOND[index]
 
