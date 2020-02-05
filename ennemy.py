@@ -74,7 +74,7 @@ class Minotaur(Ennemy):
                                        self.sprites['idle'].cells[0][2] - 20,
                                        self.sprites['idle'].cells[0][3]
                                        )
-        pygame.draw.rect(fenetre, [255, 0, 255], self.hitbox)
+        # pygame.draw.rect(fenetre, [255, 0, 255], self.hitbox)
 
         if self.velocity == 0:
             self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)

@@ -11,7 +11,7 @@ file = 'Audio/1.mp3'
 pygame.init()
 pygame.mixer.init()
 pygame.mixer.music.load(file)
-pygame.mixer.music.play(-1)
+# pygame.mixer.music.play(-1)
 
 def main(screen: pygame.display) -> None:
 
