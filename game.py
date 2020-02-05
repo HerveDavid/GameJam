@@ -63,18 +63,28 @@ class Game():
         pygame.mixer.init()
         pygame.mixer.music.load("Audio/1.mp3")
         pygame.mixer.music.play(-1)
-        pygame.mixer.music.load("Audio/Fx/wind.mp3")
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.4)
+
 
     def playMixerEnnemy(self, channel, sounds):
+        channel.set_volume(0.8)
         random_sound = random.choice(sounds)
         if not channel.get_busy():
             if random.randint(0, 30) == 10:
                 channel.play(random_sound)
 
-
-    def playMixerPlayer(self, channel, sounds):
+    def playMixerPlayer(self, channel, sounds, sound_flute):
+        channel.set_volume(1.7)
         random_sound = random.choice(sounds)
         if self.player.jumping:
             if not channel.get_busy():
                 channel.play(random_sound)
+        if self.player.blow:
+            if not channel.get_busy():
+                channel.set_volume(0.3)
+                channel.play(sound_flute)
+
+    def playMixerAmbiant(self, channel, sound):
+        channel.set_volume(0.6)
+        if not channel.get_busy():
+            channel.play(sound)

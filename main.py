@@ -17,9 +17,8 @@ def main(screen: pygame.display) -> None:
     # enemies.append(minotaur)
     # enemies.append(minotaur2)
 
-    game = Game(etage1, player, enemies)
+    game = Game(test, player, enemies)
     clock = pygame.time.Clock()
-
     game.initMixer()
 
     sound_channel_player = pygame.mixer.Channel(0)
@@ -31,12 +30,14 @@ def main(screen: pygame.display) -> None:
     channels.append(sound_channel_ennemy)
     channels.append(sound_channel_ambient)
 
-    sound_player_jump1 = pygame.mixer.Sound("Audio/Fx/jump1.wav")
-    sound_player_jump2 = pygame.mixer.Sound("Audio/Fx/jump2.wav")
+    sound_player_jump1 = pygame.mixer.Sound("Audio/Fx/jump1.ogg")
+    sound_player_jump2 = pygame.mixer.Sound("Audio/Fx/jump2.ogg")
 
     sounds_player = []
     sounds_player.append(sound_player_jump1)
     sounds_player.append(sound_player_jump2)
+
+    sound_flute = pygame.mixer.Sound("Audio/Fx/flute.ogg")
 
     sound_minotaur1 = pygame.mixer.Sound("Audio/Fx/minotaur1.wav")
     sound_minotaur2 = pygame.mixer.Sound("Audio/Fx/minotaur2.wav")
@@ -51,13 +52,12 @@ def main(screen: pygame.display) -> None:
     sounds_ambient.append(sound_blow)
 
     while RUNNING:
-
         events()
 
         game.display(screen)
         game.playMixerEnnemy(channels[1], sounds_minotaur)
-        game.playMixerPlayer(channels[0], sounds_player)
-
+        game.playMixerPlayer(channels[0], sounds_player, sound_flute)
+        game.playMixerAmbiant(channels[2], sound_blow)
         pygame.display.update()
         screen.fill(COLORS['black'])
         
