@@ -15,31 +15,44 @@ white = pygame.color.Color('#ffffff')
 red = pygame.color.Color('#ff0000')
 black = pygame.color.Color('#000000')
 
-font = pygame.font.Font(None, 40)
-text = font.render('Jouer', True, white)
+font = pygame.font.Font(None, 60)
+text = font.render('A Bout De Souffle', True, white)
 
 def start_menu(screen):
+
     start = True
     while start:
+
+        action = None
         pos = pygame.mouse.get_pos()
         button_width = 240
         button_height = 80
-        screen.blit(text, (WIDTH/2 - button_width/2,HEIGHT/2 + 50))
-        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 50 and pos[1] <= HEIGHT/2 + 50 + button_height:
+        colour = red
+
+        screen.blit(text, (WIDTH/2 - text.get_rect().width/2, 200))
+
+        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 30 and pos[1] <= HEIGHT/2 + 30 + button_height:
             colour = white
-        else:
-            colour = red
-        #pygame.draw.rect(screen, colour, (20, 20, 260, 100))
-        pygame.draw.rect(screen, colour, (WIDTH/2 - button_width/2, HEIGHT/2 + 50, button_width, button_height))
+            action = "start"
+
+        pygame.draw.rect(screen, colour, (WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, button_width, button_height))
         pygame.display.flip()
+
+        colour = red
+        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 180 and pos[1] <= HEIGHT/2 + 180 + button_height:
+            colour = white
+            action = "credits"
+
+        pygame.draw.rect(screen, colour, (WIDTH / 2 - button_width / 2, HEIGHT / 2 + 180, button_width, button_height))
+        pygame.display.flip()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if colour == white:
-                    return "start"
-
+                if action is not None:
+                    return action
 
 
 def main(screen: pygame.display) -> None:
@@ -93,4 +106,6 @@ if __name__ == '__main__':
     ans = start_menu(screen)
     if ans == "start":
         main(screen)
+    elif ans == "credits":
+        display_credits(screen)
 
