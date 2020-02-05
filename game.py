@@ -22,9 +22,9 @@ class Game():
                 id = self.map[y][i]
 
                 if id:
-                    if id in range(1, 6):
+                    if id in range(0, len(TUILES)+1):
                         self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
-                    elif id == 8:
+                    elif 8:
                         self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
 
     def display(self, screen):

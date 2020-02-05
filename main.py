@@ -22,7 +22,7 @@ def main(screen: pygame.display) -> None:
 
     enemies = []
     enemies.append(minotaur)
-    enemies.append(minotaur2)
+    # enemies.append(minotaur2)
 
     game = Game(etage1, player, enemies)
     clock = pygame.time.Clock()
