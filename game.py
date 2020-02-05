@@ -57,6 +57,7 @@ class Game():
 
         if self.player.stream.dir != 0:
             self.player.stream.draw(screen, self.player.flip)
+            self.player.stream.fear(self.enemies)
 
         self.player.draw(screen)
 
@@ -91,11 +92,11 @@ class Game():
                     channel.play(sound_jump)
         if self.player.blow:
             if not channel.get_busy():
-                channel.set_volume(0.3)
-                channel.play(sound_flute)
+                    channel.set_volume(0.3)
+                    channel.play(sound_flute)
         if self.player.xVelocity != 0 and self.player.falling == False and self.player.jumping == False:
             if not channel.get_busy():
-                channel.set_volume(0.7)
+                channel.set_volume(0.5)
                 channel.play(sound_step)
 
     def playMixerAmbiant(self, channel, sound):

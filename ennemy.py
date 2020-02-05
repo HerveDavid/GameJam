@@ -55,6 +55,7 @@ class Minotaur(Ennemy):
 
         self.start = start
         self.end = end
+        self.peur = False
 
 
     def events(self):
@@ -65,20 +66,32 @@ class Minotaur(Ennemy):
     def move(self):
         self.x += self.velocity
 
+    def attack(self):
+
+        self.peur = True
+
+
     def draw(self, fenetre):
-        self.events()
-        self.move()
 
-        self.hitbox = pygame.rect.Rect(self.x + self.sprites['idle'].handle[7][0],
-                                       self.y + self.sprites['idle'].handle[7][1],
-                                       self.sprites['idle'].cells[0][2] - 20,
-                                       self.sprites['idle'].cells[0][3]
-                                       )
-        # pygame.draw.rect(fenetre, [255, 0, 255], self.hitbox)
+        if not self.peur:
 
-        if self.velocity == 0:
-            self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
+            self.events()
+            self.move()
+
+            self.hitbox = pygame.rect.Rect(self.x + self.sprites['idle'].handle[7][0],
+                                           self.y + self.sprites['idle'].handle[7][1],
+                                           self.sprites['idle'].cells[0][2] - 20,
+                                           self.sprites['idle'].cells[0][3]
+                                           )
+
+            if self.velocity == 0:
+                self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
+            else:
+                self.sprites['walks'].draw(fenetre, self.x, self.y, self.flip)
+
         else:
-            self.sprites['walks'].draw(fenetre, self.x, self.y, self.flip)
+            self.hitbox = None
+            self.sprites['idleNo'].draw(fenetre, self.x, self.y, self.flip)
+            self.peur = False
 
 
