@@ -90,7 +90,7 @@ def main(screen: pygame.display) -> None:
         game.playMixerPlayer(channels[0], sound_player_jump, sound_flute, sound_step)
         game.playMixerAmbiant(channels[2], sound_blow)
         pygame.display.update()
-        screen.fill((29, 101, 183))
+        screen.fill((35, 118, 211))
         
         clock.tick(FPS)
 
