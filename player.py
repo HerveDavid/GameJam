@@ -33,6 +33,8 @@ class Player():
 
         self.glissement = False
 
+        self.valeurTampon = 0
+
     # Définition du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y

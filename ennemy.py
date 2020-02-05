@@ -35,9 +35,7 @@ class Ennemy():
     def draw(self, surface):
         self.events()
         self.move()
-        self.sprites['walks'].draw(surface, self.x, self.y, self.flip)
-
-    # l'ennemi se déplace
+        self.sprites['idle'].draw(surface, self.x, self.y, self.flip)
 
 
 class Minotaur(Ennemy):
@@ -95,3 +93,22 @@ class Minotaur(Ennemy):
             self.peur = False
 
 
+class Sirene(Ennemy):
+
+    def __init__(self, x, y):
+
+        super(Sirene, self).__init__(x, y, 0)
+
+        self.sprites = {
+            'idle': Sprite('Assets/Siren/sirene.png', 10, 1)
+        }
+
+        self.attirance = 250
+
+    def attire(self, player):
+
+        print("sous mon charge")
+        if player.x < self.x:
+            player.x += 2
+        else:
+            player.x += -2
