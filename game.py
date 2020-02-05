@@ -2,6 +2,8 @@ import pygame
 from utilitaries import *
 from plateforme import *
 
+import random
+
 class Game():
 
     def __init__(self, map: (), player, enemies):
@@ -47,3 +49,22 @@ class Game():
         self.player.y = 0
         self.player.x = WIDTH_CENTER
         self.score = 0
+
+    def initMixer(self):
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.music.load("Audio/1.mp3")
+        pygame.mixer.music.play(-1)
+
+    def playMixerEnnemy(self, channel, sounds):
+        random_sound = random.choice(sounds)
+        if not channel.get_busy():
+            if random.randint(0, 30) == 10:
+                channel.play(random_sound)
+
+
+    def playMixerPlayer(self, channel, sounds):
+        random_sound = random.choice(sounds)
+        if self.player.jumping:
+            if not channel.get_busy():
+                channel.play(random_sound)
