@@ -1,5 +1,7 @@
 import pygame
 import sys
+from sprite import Sprite
+
 
 # Constantes
 SIZE = WIDTH, HEIGHT= 1024, 768
@@ -11,6 +13,16 @@ NB_HEIGTH_CELL = int(HEIGHT / 70) + 1
 WIDTH_CELL = WIDTH / NB_WIDTH_CELL
 HEIGHT_CELL = HEIGHT / NB_HEIGTH_CELL
 TOTALCELLS = NB_WIDTH_CELL * NB_HEIGTH_CELL
+
+TUILES = {
+    1: Sprite('Assets/Textures/mur.png', 1, 1, colorkey=False),
+    2:  Sprite('Assets/Textures/sol_sable.png', 1, 1, colorkey=False),
+    3:  Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False),
+    4:   Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False),
+    5:  Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
+    6: Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
+    7: Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
+}
 
 # Fonctions
 def events():
