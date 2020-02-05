@@ -49,7 +49,7 @@ class Platform():
         # if self.anime == (True, 3) and self.vectAle:
         #     self.index = (self.index+1) % len(self.vectAle)
         #     self.y += self.vectAle[self.index]
-        if self.type in (3, 6):
+        if self.type in (3, 8):
             self.sprite.draw(screen, self.x, self.y,flip=True, handle=0)
         else:
             self.sprite.draw(screen, self.x, self.y, handle=0)

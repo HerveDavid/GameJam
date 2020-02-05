@@ -20,7 +20,7 @@ TUILES = {
     3:  Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False),
     4:   Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False),
     5:  Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
-    6: Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
+    6:  Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
     7: Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
 }
 
