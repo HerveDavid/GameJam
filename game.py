@@ -6,19 +6,28 @@ import random
 
 class Game():
 
-    def __init__(self, map: (), fond:  {}, player, enemies):
+    def __init__(self, map: (), fond:  (), objets: (), player, enemies):
 
         self.map = map
         self.fond = fond
+        self.objets = objets
         self.player = player
         self.enemies = enemies
         self.platforms = Platforms()
         self.background = Platforms()
-        self.load()
+        self.startx = 0
+        self.starty = 0
+        self.endx = 0
+        self.endy = 0
         self.score = 0
+
+        self.load()
+
+
 
     def load(self):
 
+        # Background
         for y in range(len(self.fond)):
 
             for i in range(len(self.fond[y])):
@@ -28,7 +37,24 @@ class Game():
                 if id:
                     self.background.append(Fond(i * WIDTH_CELL, y * HEIGHT_CELL, id))
 
+        # Objets
+        for y in range(len(self.objets)):
 
+            for i in range(len(self.objets[y])):
+
+                id = self.objets[y][i]
+
+                if id:
+                    self.background.append(Objet(i * WIDTH_CELL, y * HEIGHT_CELL, id))
+                    if id == 1:
+                        self.startx = int(i * WIDTH_CELL + WIDTH_CELL / 2)
+                        self.starty = int(y * HEIGHT_CELL + 50)
+                    elif id == 2:
+                        self.endx = int(i * WIDTH_CELL)
+                        self.endy = int(y * HEIGHT_CELL)
+
+
+        # Map
         for y in range(len(self.map)):
 
             for i in range(len(self.map[y])):
@@ -41,7 +67,10 @@ class Game():
                     elif 8:
                         self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
 
+        self.playerLose()
+
     def display(self, screen):
+
 
         self.background.draw(screen)
 
@@ -59,14 +88,19 @@ class Game():
             self.player.stream.draw(screen, self.player.flip)
             self.player.stream.fear(self.enemies)
 
-        self.player.draw(screen)
-
-        if self.player.y >= HEIGHT and self.player.falling:
+        if (self.player.y >= HEIGHT and self.player.falling)\
+                or (self.player.x < 0 or self.player.x > WIDTH):
             self.playerLose()
 
+        if self.player.hitbox and self.player.hitbox.colliderect(pygame.rect.Rect(self.endx, self.endy, WIDTH_CELL, HEIGHT_CELL)):
+            print("tu as gagné")
+
+        self.player.draw(screen)
+
+
     def playerLose(self):
-        self.player.y = 9*HEIGHT_CELL
-        self.player.x = 10
+        self.player.x = self.startx
+        self.player.y = self.starty
         self.score = 0
 
     def initMixer(self):

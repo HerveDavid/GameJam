@@ -1,6 +1,4 @@
-from sprite import Sprite
-import pygame
-import random as rd
+import copy
 from utilitaries import *
 
 class Platform():
@@ -38,7 +36,6 @@ class Platform():
         # if player.xVelocity != 0:
         if self.type != 7 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
 
-
             if player.x < self.hitbox.x:
                 player.x = self.hitbox.x - self.hitbox.width / 2
             elif player.x > self.hitbox.x:
@@ -62,15 +59,14 @@ class Platform():
 
         # pygame.draw.line(screen, [255, 0, 0], (self.x, self.y), (self.width, self.y), 1)
 
-
 class Flag(Platform):
 
     def __init__(self, x, y):
 
         super(Flag, self).__init__(x, y)
 
-        self.spriteNoWind =  Sprite('Assets/Textures/drapeau.png', 10, 1)
-        self.sprite = Sprite('Assets/Textures/drapeau_vent.png', 10, 1)
+        self.spriteNoWind =  copy.copy(Sprite('Assets/Textures/drapeau.png', 10, 1))
+        self.sprite = copy.copy(Sprite('Assets/Textures/drapeau_vent.png', 10, 1))
 
         # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
         #                                self.y + self.sprite.handle[0][1],
@@ -83,13 +79,8 @@ class Flag(Platform):
         self.wind = False
 
     def test(self, player):
-
         self.wind = player.stream.dir in [1, 2]
         self.flip = player.stream.dir == 1
-            # if player.stream:
-            #     return self
-            # else:
-            # print(player.stream.dir)
         return None
 
     def draw(self, screen):
@@ -112,6 +103,20 @@ class Fond(Platform):
 
     def draw(self, screen):
         self.sprite.draw(screen, self.x, self.y, handle=0)
+
+class Objet(Platform):
+
+    def __init__(self, x ,y, id):
+
+        super(Objet, self).__init__(x,y, 1)
+
+        self.sprite = OBJETS[id]
+
+    def test(self, player):
+        None
+
+    def mur(self, player):
+        None
 
 
 
