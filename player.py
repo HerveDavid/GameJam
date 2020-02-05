@@ -1,6 +1,7 @@
 import pygame
 from sprite import Sprite
 from plateforme import Platform
+from stream import Stream
 
 class Player():
 
@@ -28,7 +29,9 @@ class Player():
 
         self.hitbox = None
 
-    # Définir la position du joueur
+        self.stream = Stream(self.x,self.y,0)
+
+    # Définition du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y
         self.xVelocity  = 0
@@ -37,18 +40,42 @@ class Player():
         self.falling = True
         self.blow = False
 
+    def setStream(self):
+        if self.flip==True:
+            self.stream= Stream(self.x,self.y,1)
+        else:
+            self.stream= Stream(self.x, self.y,2)
+
     # Actions du joueur
     def events(self):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_LEFT]:
-            self.xVelocity = -self.velocity
-            self.blow = False
-            self.flip = True
+            if self.y == self.stream.y and self.stream.dir==1 :
+                self.xVelocity = -self.velocity -5
+                self.blow = False
+                self.flip = True
+            elif self.y == self.stream.y and self.stream.dir==2 :
+                self.xVelocity = -self.velocity +10
+                self.blow = False
+                self.flip = True
+            else:
+                self.xVelocity = -self.velocity
+                self.blow = False
+                self.flip = True
         elif keys[pygame.K_RIGHT]:
-            self.xVelocity = self.velocity
-            self.blow = False
-            self.flip = False
+            if self.y == self.stream.y and self.stream.dir==2 :
+                self.xVelocity = self.velocity +5
+                self.blow = False
+                self.flip = False
+            elif self.y == self.stream.y and self.stream.dir==1 :
+                self.xVelocity = self.velocity - 10
+                self.blow = False
+                self.flip = False
+            else:
+                self.xVelocity = self.velocity
+                self.blow = False
+                self.flip = False
         else: self.xVelocity = 0
 
         if keys[pygame.K_SPACE] and not self.jumping and not self.falling:
@@ -56,6 +83,10 @@ class Player():
             self.jumpCounter = 0
         elif keys[pygame.K_UP] and self.xVelocity == 0 and not self.jumping and not self.falling:
             self.blow = True
+
+        if keys[pygame.K_DOWN] and not self.jumping and not self.falling:
+            self.setStream()
+            self.blow= True
 
     # Déplacement du joueur
     def move(self):
