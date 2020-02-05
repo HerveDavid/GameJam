@@ -17,7 +17,7 @@ class Game():
 
     def load(self):
 
-        self.background = Sprite('Assets/Textures/background_test.png', 1, 1)
+        self.background = Sprite('Assets/Textures/PixelArt.png', 1, 1, colorkey=False)
 
         for y in range(len(self.map)):
 

@@ -138,7 +138,6 @@ class Player():
                                        self.sprites['run'].cells[0][2],
                                        self.sprites['run'].cells[0][3] + 5
                                        )
-        # pygame.draw.rect(fenetre, [0, 255, 0], self.hitbox)
 
         if self.blow:
             self.sprites['blow'].draw(fenetre, self.x, self.y, self.flip)
