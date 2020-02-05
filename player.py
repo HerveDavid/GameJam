@@ -26,6 +26,12 @@ class Player():
         # Current plateforme
         self.currentPlatorm = None
 
+        self.hitbox = pygame.rect.Rect( self.x + self.sprites['jump'].handle[0][0],
+                                        self.y + self.sprites['jump'].handle[0][1],
+                                        self.sprites['jump'].cells[0][2],
+                                        self.sprites['jump'].cells[0][3]
+                                        )
+
     # Définir la position du joueur
     def setLocation(self, x, y):
         self.x, self.y = x, y
@@ -72,6 +78,13 @@ class Player():
     def draw(self, fenetre):
         self.events()
         self.move()
+
+        self.hitbox = pygame.rect.Rect(self.x + self.sprites['run'].handle[1][0],
+                                       self.y + self.sprites['run'].handle[8][1] -5,
+                                       self.sprites['run'].cells[0][2],
+                                       self.sprites['run'].cells[0][3] + 5
+                                       )
+        pygame.draw.rect(fenetre, [0, 255, 0], self.hitbox)
 
         if self.xVelocity == 0:
             self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)

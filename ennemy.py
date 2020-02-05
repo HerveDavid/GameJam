@@ -21,6 +21,9 @@ class Ennemy():
         # Plateforme
         self.platform = (x, y)
 
+        # Hitbox
+        self.hitbox = None
+
     def events(self):
         None
 
@@ -39,7 +42,7 @@ class Ennemy():
 
 class Minotaur(Ennemy):
 
-    def __init__(self, x, y, parcours):
+    def __init__(self, x, y, start, end):
 
         super(Minotaur, self).__init__(x, y)
 
@@ -50,10 +53,12 @@ class Minotaur(Ennemy):
             'walks': Sprite('Assets/Minotaur/min_walking.png', 10, 1, 2),
         }
 
-        self.parcours = parcours
+        self.start = start
+        self.end = end
+
 
     def events(self):
-        if self.x < self.parcours[0] or self.x > self.parcours[1]:
+        if self.x < self.start or self.x > self.end:
             self.velocity = -self.velocity
             self.flip = self.velocity < 0
 
@@ -61,10 +66,19 @@ class Minotaur(Ennemy):
         self.x += self.velocity
 
     def draw(self, fenetre):
-        # self.events()
+        self.events()
         self.move()
+
+        self.hitbox = pygame.rect.Rect(self.x + self.sprites['idle'].handle[7][0],
+                                       self.y + self.sprites['idle'].handle[7][1],
+                                       self.sprites['idle'].cells[0][2] - 20,
+                                       self.sprites['idle'].cells[0][3]
+                                       )
+        pygame.draw.rect(fenetre, [255, 0, 255], self.hitbox)
 
         if self.velocity == 0:
             self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
         else:
             self.sprites['walks'].draw(fenetre, self.x, self.y, self.flip)
+
+

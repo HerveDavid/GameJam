@@ -8,25 +8,33 @@ from  maps import *
 
 def main(screen: pygame.display) -> None:
 
-    player = Player(300, 300)
-    minotaur = Minotaur(300, 300, (200, 400))
+    player = Player(WIDTH_CENTER, 0)
+
+    minotaur = Minotaur(0, (NB_HEIGTH_CELL -2)*HEIGHT_CELL, 0, 5 * WIDTH_CELL)
+    minotaur2 = Minotaur(7 * WIDTH_CELL, (NB_HEIGTH_CELL -1)*HEIGHT_CELL, 7 * WIDTH_CELL, 7 * WIDTH_CELL + 3 * WIDTH_CELL)
+
     enemies = []
     enemies.append(minotaur)
+    enemies.append(minotaur2)
+
     game = Game(etage1, player, enemies)
+    clock = pygame.time.Clock()
     while RUNNING:
         events()
-        # minotaur.draw(screen)
-        # player.draw(screen)
+
         game.display(screen)
 
 
         pygame.display.update()
         screen.fill(COLORS['white'])
         
-        pygame.time.Clock().tick(FPS)
+        clock.tick(FPS)
+
+
 
 
 if __name__ == '__main__':
 
     screen = init()
     main(screen)
+

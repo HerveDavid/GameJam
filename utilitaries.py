@@ -23,5 +23,4 @@ def events():
 
 def init():
     pygame.init()
-    CLOCK = pygame.time.Clock()
     return pygame.display.set_mode(SIZE)
