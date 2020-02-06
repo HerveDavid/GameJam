@@ -147,7 +147,7 @@ def display_instructions(screen):
 
     text_instructions_resume = font_content.render('Après avoir reçu la bénédiction d\'Eole, le flûtiste Alexios fût contraint de gravir au sommet de la ', True, white)
     text_instructions_resume2 = font_content.render('Tour des Dieux afin de prouver sa bravoure.', True, white)
-    text_instructions_resume3 = font_content.render('Accompagné de son instrument enchanté, il allait devoir braver les plus grands dangers ', True, white)
+    text_instructions_resume3 = font_content.render('Accompagné de son instrument enchanté, il devra braver les plus grands dangers ', True, white)
     text_instructions_resume4 = font_content.render('et atteindre le sommet sans recourir aux armes ou à la violence...', True, white)
 
     text_instructions_move = font_content.render('Utilisez Z, Q, S, D pour vous déplacer et les flèches directionnelles pour contrôler le vent.', True, white)
