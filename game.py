@@ -1,6 +1,6 @@
-import pygame
-from utilitaries import *
 from plateforme import *
+from ennemy import *
+import math
 
 import random
 
@@ -81,6 +81,15 @@ class Game():
 
         for e in self.enemies:
             e.draw(screen)
+
+            if isinstance(e, Sirene):
+                e.flip = self.player.x < e.x
+
+                distance = math.hypot(abs(self.player.x - e.x), abs(self.player.y - e.y))
+
+                if distance < e.attirance:
+                    e.attire(self.player)
+
             if e.hitbox and self.player.hitbox:
                 if e.hitbox.colliderect(self.player.hitbox):
                     self.playerLose()
