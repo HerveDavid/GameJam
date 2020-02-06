@@ -144,7 +144,7 @@ class Game():
                 channel.play(random_sound)
 
     def playMixerPlayer(self, channel, sound_jump, sound_flute, sound_step):
-        channel.set_volume(0.6)
+        channel.set_volume(0.4)
         if self.player.jumping:
             if not channel.get_busy():
                 if not self.player.falling:
