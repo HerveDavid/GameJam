@@ -200,7 +200,7 @@ class Platforms():
         return False
 
 
-    def draw(self, screen):
+    def draw(self, screen, help=False):
 
         for platform in self.containers:
             platform.draw(screen)

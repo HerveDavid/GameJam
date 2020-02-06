@@ -43,7 +43,7 @@ button_height = 80
 def start_menu(screen):
 
     bgaccueil = Sprite('Assets/Background/background_accueil.png', 1, 1, scale=2.68)
-    persoassie = Sprite('Assets/Player/perso_assi.png', 10, 3, scale=2.5)
+    persoassie = Sprite('Assets/Player/perso_assi.png', 10, 9, scale=2.5)
 
     if not pygame.mixer.get_busy():
         pygame.init()
@@ -54,9 +54,9 @@ def start_menu(screen):
 
     start = True
     while start:
-        clock.tick(70)
+        clock.tick(10)
         bgaccueil.draw(screen, 0, 0, handle=0)
-        persoassie.draw(screen, 500, 228, handle=0)
+        persoassie.draw(screen, 500, 223, handle=0)
 
         #2.56
         # tour.draw(screen, 0, 0 )
@@ -192,6 +192,7 @@ def display_instructions(screen):
     text_instructions_minotaur6 = font_content.render('pendant quelques secondes.', True, white)
 
     img_minotaur = pygame.image.load("Assets/Minotaur/mino_normal.png")
+    minotaureSprite = Sprite("Assets/Minotaur/min_idle_light.png", 10, 1, scale=2.4)
     img_minotaur_scale = pygame.transform.rotozoom(img_minotaur, 0, 2)
 
     text_instructions_siren = font_content.render('LA SIRENE :', True, white)
@@ -202,8 +203,10 @@ def display_instructions(screen):
     text_instructions_siren4 = font_content.render('rester en vie !', True, white)
 
     img_siren = pygame.image.load("Assets/Siren/sirene_normale.png")
+    sirenSprite = Sprite('Assets/Siren/sirene.png', 10, 1)
 
     while True:
+        clock.tick(10)
         action = None
         pos = pygame.mouse.get_pos()
         screen.fill(black)
@@ -230,7 +233,7 @@ def display_instructions(screen):
         screen.blit(text_instructions_ennemy, (marge, marge + 290))
 
         screen.blit(text_instructions_minotaur1, (marge, marge + 350))
-        screen.blit(img_minotaur_scale, (marge, 430))
+        # screen.blit(img_minotaur_scale, (marge, 430))
         screen.blit(text_instructions_minotaur2,(marge, 520))
         screen.blit(text_instructions_minotaur3,(marge, 550))
         screen.blit(text_instructions_minotaur4,(marge, 580))
@@ -238,7 +241,9 @@ def display_instructions(screen):
         screen.blit(text_instructions_minotaur6,(marge, 640))
 
         screen.blit(text_instructions_siren, (marge + 500, marge + 350))
-        screen.blit(img_siren, (marge + 500, 430))
+        # screen.blit(img_siren, (marge + 500, 430))
+        sirenSprite.draw(screen, 660, 435, handle=0)
+        minotaureSprite.draw(screen, 150, 412, handle=0)
         screen.blit(text_instructions_siren1, (marge + 500, marge + 475))
         screen.blit(text_instructions_siren2, (marge + 500, marge + 505))
         screen.blit(text_instructions_siren3, (marge + 500, marge + 535))
