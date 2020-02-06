@@ -80,11 +80,7 @@ class   Minotaur(Ennemy):
             self.events()
             self.move()
 
-            self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0] - 20,
-                                           self.y + self.sprites[s].handle[7][1],
-                                           self.sprites[s].cells[0][2] + 30,
-                                           self.sprites[s].cells[0][3]
-                                           )
+
 
             self.light.draw(fenetre)
 
@@ -95,6 +91,12 @@ class   Minotaur(Ennemy):
                 self.sprites['walks'].draw(fenetre, self.x, self.y, self.flip)
                 s = 'walks'
 
+            self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0] - 20,
+                                           self.y + self.sprites[s].handle[7][1],
+                                           self.sprites[s].cells[0][2] + 30,
+                                           self.sprites[s].cells[0][3]
+                                           )
+
 
 
         else:
@@ -102,6 +104,7 @@ class   Minotaur(Ennemy):
             self.sprites['idleNo'].draw(fenetre, self.x, self.y, self.flip)
             s = 'idleNo'
             self.peur = False
+
 
 
 

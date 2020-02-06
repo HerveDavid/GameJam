@@ -31,6 +31,8 @@ TUILES_FOND = {
     4: Sprite('Assets/Background/fond_trou03.png', 1, 1, colorkey=False),
     5: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
     6: Sprite('Assets/Background/fond_light.png', 1, 1, colorkey=False),
+    7: Sprite('Assets/Background/fonds_cassed.png',1,1, colorkey= False),
+    8: Sprite('Assets/Background/fond_casseg.png',1,1,colorkey=False),
     10: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
     11: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False)
 }
