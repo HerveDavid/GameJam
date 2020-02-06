@@ -21,7 +21,15 @@ TUILES = {
     4:   Sprite('Assets/Textures/sol_sable_cote.png', 1, 1, colorkey=False),
     5:  Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
     6:  Sprite('Assets/Textures/mur_cote.png', 1, 1, colorkey=False),
-    7: Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False)
+    7: Sprite('Assets/Textures/plateforme_sable.png', 1, 1, colorkey=False),
+    8: Sprite('Assets/Textures/entree.png', 1, 1, colorkey=False),
+    9: Sprite('Assets/Textures/carrelage.png',1,1,colorkey=False),
+    10: Sprite('Assets/Textures/carrelage_cote.png',1,1,colorkey=False),
+    11: Sprite('Assets/Textures/carrelage_plateforme.png',1,1,colorkey=False),
+    12: Sprite('Assets/Textures/carrelage_sol.png', 1, 1, colorkey=False),
+    13: Sprite('Assets/Textures/carrelage_sol_cote.png', 1, 1, colorkey=False),
+    14: Sprite('Assets/Textures/sortie.png', 1, 1, colorkey=False)
+
 }
 
 TUILES_FOND = {

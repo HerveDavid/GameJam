@@ -34,7 +34,7 @@ class Platform():
 
     def mur(self, player):
         # if player.xVelocity != 0:
-        if self.type != 7 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
+        if self.type != 7 and self.type != 11 and self.type !=8 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
 
             if player.y < self.hitbox.y:
                 player = self.hitbox.y - 10

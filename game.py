@@ -65,7 +65,7 @@ class Game():
                 if id:
                     if id in range(0, len(TUILES)+1):
                         self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
-                    elif 8:
+                    elif -1:
                         self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
 
         self.playerLose()
