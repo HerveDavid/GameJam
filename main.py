@@ -18,6 +18,7 @@ red = pygame.color.Color('#ff0000')
 black = pygame.color.Color('#000000')
 
 font = pygame.font.Font(None, 50)
+font_content = pygame.font.Font(None, 30)
 text = font.render('A Bout De Souffle', True, white)
 text_play = font.render('Jouer', True, white)
 text_instructions = font.render('Commandes', True, white)
@@ -27,7 +28,6 @@ text_back = font.render('Retour', True, white)
 bg = pygame.image.load("Assets/Background/main_bg.jpg")
 bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 babel = pygame.image.load("Assets/Background/babel.png")
-#babel = pygame.transform.scale(babel, (WIDTH/2))
 
 marge = 40
 button_width = 240
@@ -120,6 +120,29 @@ def display_instructions(screen):
 
     text_instructions_content = font.render('Voici les commandes :', True, white)
 
+    text_instructions_resume = font_content.render('Après avoir reçu la bénédiction d\'Eole, le flûtiste Alexios fût contraint de gravir au sommet de la ', True, white)
+    text_instructions_resume2 = font_content.render('Tour zizi afin de prouver sa bravoure.', True, white)
+    text_instructions_resume3 = font_content.render('Accompagné de son instrument enchanté, il allait devoir braver les plus grands dangers ', True, white)
+    text_instructions_resume4 = font_content.render('et atteindre le sommet sans recourir aux armes ou à la violence...', True, white)
+
+    text_instructions_move = font_content.render('Utilisez Z, Q, S, D pour vous déplacer et les flèches directionnelles pour contrôler le vent.', True, white)
+    text_instructions_ennemy = font_content.render('Durant son périple, Alexios croisera le chemin de divers ennemis avec leurs particularités :', True, white)
+
+    text_instructions_minotaur1 = font_content.render('Le minotaure :', True, white)
+
+    text_instructions_minotaur2 = font_content.render('Ce monstre de chair vous réduira en', True, white)
+    text_instructions_minotaur3 = font_content.render('miettes si vous entrez dans sa lumière.', True, white)
+    text_instructions_minotaur4 = font_content.render('Utilisez votre flûte pour éteindre sa', True, white)
+    text_instructions_minotaur5 = font_content.render('torche et ainsi le rendre inoffensif', True, white)
+    text_instructions_minotaur6 = font_content.render('pendant quelques secondes.', True, white)
+
+    img_minotaur = pygame.image.load("Assets/Minotaur/mino_normal.png")
+    img_minotaur_scale = pygame.transform.rotozoom(img_minotaur, 0, 2)
+
+    text_instructions_siren = font_content.render('La sirène :', True, white)
+
+    img_siren = pygame.image.load("Assets/Siren/sirene_normale.png")
+
     while True:
         action = None
         pos = pygame.mouse.get_pos()
@@ -133,6 +156,26 @@ def display_instructions(screen):
         pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text_instructions_content, (marge, marge))
+        screen.blit(text_instructions_resume, (marge, marge + 60))
+        screen.blit(text_instructions_resume2, (marge, marge + 90))
+        screen.blit(text_instructions_resume3, (marge, marge + 120))
+        screen.blit(text_instructions_resume4, (marge, marge + 150))
+
+        screen.blit(text_instructions_move, (marge, marge + 210))
+
+        screen.blit(text_instructions_ennemy, (marge, marge + 270))
+        screen.blit(text_instructions_minotaur1, (marge, marge + 330))
+        screen.blit(img_minotaur_scale, (marge, 410))
+        screen.blit(text_instructions_minotaur2,(marge, 500))
+        screen.blit(text_instructions_minotaur3,(marge, 530))
+        screen.blit(text_instructions_minotaur4,(marge, 560))
+        screen.blit(text_instructions_minotaur5,(marge, 590))
+        screen.blit(text_instructions_minotaur6,(marge, 620))
+
+        screen.blit(text_instructions_siren, (marge + 500, marge + 330))
+
+        screen.blit(img_siren, (marge + 500, 410))
+
         screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
 
         pygame.display.flip()
