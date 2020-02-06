@@ -5,6 +5,7 @@ from player import Player
 from ennemy import *
 from game import Game
 from  maps import *
+from sprite import Sprite
 import pygame.freetype
 from  changementSalles import *
 from tkinter import *
@@ -17,8 +18,10 @@ red = pygame.color.Color('#ff0000')
 black = pygame.color.Color('#000000')
 
 font = pygame.font.Font(None, 50)
-font_content = pygame.font.Font(None, 30)
 text = font.render('A Bout De Souffle', True, white)
+text_play = font.render('Jouer', True, white)
+text_instructions = font.render('Commandes', True, white)
+text_credits = font.render('Credits', True, white)
 text_back = font.render('Retour', True, white)
 
 bg = pygame.image.load("Assets/Background/main_bg.jpg")
@@ -38,26 +41,26 @@ def start_menu(screen):
         screen.blit(bg, (0, 0))
         screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
 
-        text_start_color = white
-        text_credits_color = white
-        text_instructions_color = white
-
         action = None
         pos = pygame.mouse.get_pos()
         colour = red
 
-        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 100 and pos[1] <= HEIGHT/2 + 100 + button_height:
+        bt = Sprite('Assets/boutons/button.png', 1, 1, scale=4, colorkey=0)
+        bt.draw(screen, WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, handle=0)
+
+
+        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 30 and pos[1] <= HEIGHT/2 + 30 + button_height:
             colour = white
             action = "start"
-            text_start_color = red
+            bt = Sprite('Assets/boutons/button.png', 1, 1, scale=4, colorkey=0)
+            bt.draw(screen, WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, handle=0)
 
-        pygame.draw.rect(screen, colour, (WIDTH / 2 - button_width / 2, HEIGHT / 2 + 100, button_width, button_height))
+
 
         colour = red
         if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "credits"
-            text_credits_color = red
 
         pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
@@ -65,16 +68,11 @@ def start_menu(screen):
         if pos[0] >= marge and pos[0] <= marge + button_width and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "instructions"
-            text_instructions_color = red
 
         pygame.draw.rect(screen, colour, (marge, HEIGHT - (button_height + marge), button_width, button_height))
 
-        text_play = font.render('Jouer', True, text_start_color)
-        text_instructions = font.render('Commandes', True, text_instructions_color)
-        text_credits = font.render('Credits', True, text_credits_color)
-
         screen.blit(text, (WIDTH/2 - text.get_rect().width/2, 100))
-        screen.blit(text_play, (WIDTH / 2 - text_play.get_rect().width / 2, HEIGHT/2 + 120))
+        screen.blit(text_play, (WIDTH / 2 - text_play.get_rect().width / 2, HEIGHT/2 + 50))
         screen.blit(text_instructions, (marge + 15, HEIGHT - (marge + 60)))
         screen.blit(text_credits, (WIDTH - (marge + (button_width - 50)), HEIGHT - (marge + 60)))
 
@@ -90,13 +88,7 @@ def start_menu(screen):
 
 def display_credits(screen):
 
-    text_credits_content = font.render('CREDITS :', True, white)
-    text_credits_team = font_content.render('Jeu développé par IDEOS', True, white)
-    text_credits_game_developpment = font_content.render('Développement : HERVE David, GODEFROIS Louis, PEYRIN Florent', True, white)
-    text_credits_game_designer = font_content.render('Game Design : Mike le Québecois', True, white)
-    text_credits_game_graphism = font_content.render('Graphisme : VIALLON Gabriel', True, white)
-    text_credits_game_level_design = font_content.render('Level Design : GODEFROIS Louis', True, white)
-    text_credits_game_sound_design = font_content.render('Sound Design : PEYRIN Florent', True, white)
+    text_credits_content = font.render('Voici les crédits :', True, white)
 
     while True:
         action = None
@@ -111,13 +103,6 @@ def display_credits(screen):
         pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text_credits_content, (marge, marge))
-        screen.blit(text_credits_team, (marge, marge + 60))
-        screen.blit(text_credits_game_developpment, (marge, marge + 120))
-        screen.blit(text_credits_game_designer, (marge, marge + 180))
-        screen.blit(text_credits_game_graphism, (marge, marge + 240))
-        screen.blit(text_credits_game_level_design, (marge, marge + 300))
-        screen.blit(text_credits_game_sound_design, (marge, marge + 360))
-
         screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
 
         pygame.display.flip()
@@ -133,7 +118,7 @@ def display_credits(screen):
 
 def display_instructions(screen):
 
-    text_instructions_content = font.render('COMMANDES :', True, white)
+    text_instructions_content = font.render('Voici les commandes :', True, white)
 
     while True:
         action = None
@@ -159,6 +144,9 @@ def display_instructions(screen):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if action is not None:
                     return action
+
+
+
 
 def main(screen: pygame.display) -> None:
 

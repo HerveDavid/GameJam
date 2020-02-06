@@ -118,7 +118,7 @@ class Sirene(Ennemy):
         super(Sirene, self).__init__(x, y, 0)
 
         self.sprites = {
-            'idle': Sprite('Assets/Siren/sirene.png', 4, 1),
+            'idle': Sprite('Assets/Siren/sirene.png', 10, 1),
             'aura': Sprite('Assets/Siren/halo_sirene.png', 8, 1, colorkey=False, scale=1)
         }
 
