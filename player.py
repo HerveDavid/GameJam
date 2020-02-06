@@ -167,3 +167,4 @@ class Player():
                                        self.sprites[s].cells[0][3]
                                        )
         # pygame.draw.rect(fenetre, [255, 0, 0], self.hitbox)
+
