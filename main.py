@@ -19,7 +19,7 @@ black = pygame.color.Color('#000000')
 
 font = pygame.font.Font(None, 50)
 font_content = pygame.font.Font(None, 30)
-text = font.render('A Bout De Souffle', True, white)
+text = font.render('A BOUT DE SOUFFLE', True, white)
 text_play = font.render('Jouer', True, white)
 text_instructions = font.render('Commandes', True, white)
 text_credits = font.render('Credits', True, white)
@@ -118,7 +118,7 @@ def display_credits(screen):
 
 def display_instructions(screen):
 
-    text_instructions_content = font.render('Voici les commandes :', True, white)
+    text_instructions_content = font.render('COMMANDES :', True, white)
 
     text_instructions_resume = font_content.render('Après avoir reçu la bénédiction d\'Eole, le flûtiste Alexios fût contraint de gravir au sommet de la ', True, white)
     text_instructions_resume2 = font_content.render('Tour zizi afin de prouver sa bravoure.', True, white)
@@ -128,7 +128,7 @@ def display_instructions(screen):
     text_instructions_move = font_content.render('Utilisez Z, Q, S, D pour vous déplacer et les flèches directionnelles pour contrôler le vent.', True, white)
     text_instructions_ennemy = font_content.render('Durant son périple, Alexios croisera le chemin de divers ennemis avec leurs particularités :', True, white)
 
-    text_instructions_minotaur1 = font_content.render('Le minotaure :', True, white)
+    text_instructions_minotaur1 = font_content.render('LE MINOTAURE :', True, white)
 
     text_instructions_minotaur2 = font_content.render('Ce monstre de chair vous réduira en', True, white)
     text_instructions_minotaur3 = font_content.render('miettes si vous entrez dans sa lumière.', True, white)
@@ -139,7 +139,12 @@ def display_instructions(screen):
     img_minotaur = pygame.image.load("Assets/Minotaur/mino_normal.png")
     img_minotaur_scale = pygame.transform.rotozoom(img_minotaur, 0, 2)
 
-    text_instructions_siren = font_content.render('La sirène :', True, white)
+    text_instructions_siren = font_content.render('LA SIRENE :', True, white)
+
+    text_instructions_siren1 = font_content.render('Elle vous attendra sur son rocher en', True, white)
+    text_instructions_siren2 = font_content.render('chantant afin de vous attirer.', True, white)
+    text_instructions_siren3 = font_content.render('Restez en dehors de sa portée pour', True, white)
+    text_instructions_siren4 = font_content.render('restez en vie !', True, white)
 
     img_siren = pygame.image.load("Assets/Siren/sirene_normale.png")
 
@@ -164,6 +169,7 @@ def display_instructions(screen):
         screen.blit(text_instructions_move, (marge, marge + 210))
 
         screen.blit(text_instructions_ennemy, (marge, marge + 270))
+
         screen.blit(text_instructions_minotaur1, (marge, marge + 330))
         screen.blit(img_minotaur_scale, (marge, 410))
         screen.blit(text_instructions_minotaur2,(marge, 500))
@@ -173,8 +179,11 @@ def display_instructions(screen):
         screen.blit(text_instructions_minotaur6,(marge, 620))
 
         screen.blit(text_instructions_siren, (marge + 500, marge + 330))
-
         screen.blit(img_siren, (marge + 500, 410))
+        screen.blit(text_instructions_siren1, (marge + 500, marge + 455))
+        screen.blit(text_instructions_siren2, (marge + 500, marge + 485))
+        screen.blit(text_instructions_siren3, (marge + 500, marge + 515))
+        screen.blit(text_instructions_siren4, (marge + 500, marge + 545))
 
         screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
 
