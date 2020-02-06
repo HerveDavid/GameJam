@@ -95,6 +95,15 @@ def display_credits(screen):
 
     text_credits_content = font.render('CREDITS :', True, white)
 
+    text_credits_ideos = font_content.render('Jeu développé par l\'équipe IDEOS', True, white)
+
+
+    text_credits_game_design = font_content.render('Game Design : Mike le Québecois', True, white)
+    text_credits_developpers = font_content.render('Développement : HERVE David, GODEFROID Louis, PEYRIN Florent', True, white)
+    text_credits_level_design = font_content.render('Level Design : GODEFROID Louis', True, white)
+    text_credits_design = font_content.render('Graphisme : VIALLON Gabriel', True, white)
+    text_credits_sound_design = font_content.render('Sound Design : PEYRIN Florent', True, white)
+
     while True:
         action = None
         pos = pygame.mouse.get_pos()
@@ -112,6 +121,13 @@ def display_credits(screen):
         # pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text_credits_content, (marge, marge))
+        screen.blit(text_credits_ideos, (marge, marge + 100))
+        screen.blit(text_credits_game_design, (marge, marge + 150))
+        screen.blit(text_credits_developpers, (marge, marge + 200))
+        screen.blit(text_credits_level_design, (marge, marge + 250))
+        screen.blit(text_credits_design, (marge, marge + 300))
+        screen.blit(text_credits_sound_design, (marge, marge + 350))
+
         screen.blit(text_back, (WIDTH - (marge + (button_width - 60)),HEIGHT - (marge + 75)))
 
         pygame.display.flip()
