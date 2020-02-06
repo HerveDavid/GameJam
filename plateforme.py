@@ -34,7 +34,7 @@ class Platform():
 
     def mur(self, player):
         # if player.xVelocity != 0:
-        if self.type != 7 and self.type != 11 and self.type !=8 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
+        if not self.type in  [7, 11, 8] and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
 
             if player.y < self.hitbox.y:
                 player = self.hitbox.y - 10
@@ -45,8 +45,10 @@ class Platform():
             if player.hitbox.x < self.hitbox.x:
                 player.x += -player.hitbox.width
                 player.y += -10
+
             elif player.x > self.hitbox.x:
                 player.x = self.hitbox.x + WIDTH_CELL + 20
+
             #
             # if player.x < self.hitbox.x:
             #     player.x = self.hitbox.x - self.hitbox.width / 2
@@ -79,18 +81,15 @@ class Flag(Platform):
 
         super(Flag, self).__init__(x, y)
 
-        self.spriteNoWind =  copy.copy(Sprite('Assets/Textures/drapeau.png', 10, 1))
-        self.sprite = copy.copy(Sprite('Assets/Textures/drapeau_vent.png', 10, 1))
-
-        # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
-        #                                self.y + self.sprite.handle[0][1],
-        #                                self.sprite.cellWidth,
-        #                                self.sprite.cellHeight
-        #                                )
+        self.spriteNoWind =  Sprite('Assets/Textures/drapeau.png', 10, 1)
+        self.sprite = Sprite('Assets/Textures/drapeau_vent.png', 10, 1)
 
         self.flip = True
         self.hitbox = None
         self.wind = False
+
+    def mur(self, player):
+        None
 
     def test(self, player):
         self.wind = player.stream.dir in [1, 2]
@@ -103,6 +102,47 @@ class Flag(Platform):
             self.sprite.draw(screen, self.x + 12, self.y + 8, flip=self.flip, handle=0)
         else:
             self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
+
+class Rambarde(Flag):
+
+    def __init__(self, x, y):
+
+        super(Flag, self).__init__(x, y)
+
+        self.sprites = {
+            'rambardeHaute': Sprite('Assets/Textures/rambarbe_haute.png', 1, 1),
+            'rambardeMonte': Sprite('Assets/Textures/rambarde_monte.png', 4, 1),
+            'rambardeBasse': Sprite('Assets/Textures/rambarde_basse.png', 1, 1)
+        }
+
+        self.flip = False
+        self.nom = 'rambardeBasse'
+        self.afficher = False
+
+    def test(self, player):
+        self.wind = player.stream.dir in [1, 2]
+
+
+        self.nom = 'rambardeBasse'
+
+
+        if self.wind and (player.stream.dir ==  self.flip or (player.stream.dir == 2 and not self.flip )):
+            self.nom = 'rambardeHaute'
+            self.afficher = True
+            if player.x < self.x or player.x > self.width:
+                return None
+            elif player.y <= self.y and player.y + 20 >= self.y:
+                return self
+            else:
+                return None
+
+    def draw(self, screen):
+        if self.nom == 'rambardeHaute':
+            self.sprites[self.nom].draw(screen, self.x, self.y, flip=self.flip, handle=0)
+        elif self.flip and self.nom == 'rambardeBasse':
+            self.sprites[self.nom].draw(screen, self.x + 57, self.y, flip=self.flip, handle=0)
+        else:
+            self.sprites[self.nom].draw(screen, self.x, self.y, flip=self.flip, handle=0)
 
 class Fond(Platform):
 

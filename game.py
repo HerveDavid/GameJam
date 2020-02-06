@@ -66,8 +66,17 @@ class Game():
                 if id:
                     if id in range(0, len(TUILES)+1):
                         self.platforms.append(Platform(i * WIDTH_CELL, y * HEIGHT_CELL, id))
-                    elif -1:
+                    elif id == -1:
                         self.platforms.append(Flag(i * WIDTH_CELL, y * HEIGHT_CELL))
+                    elif id == -2:
+                        # rond droite
+                        self.platforms.append(Rambarde( i * WIDTH_CELL, y * HEIGHT_CELL))
+                    elif id == -3:
+                        # rond gauche
+                        rambarde = Rambarde( i *WIDTH_CELL, y * HEIGHT_CELL)
+                        rambarde.flip = True
+                        self.platforms.append(rambarde)
+
 
         self.playerLose()
 
