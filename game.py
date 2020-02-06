@@ -102,11 +102,14 @@ class Game():
                 or (self.player.x < 0 or self.player.x > WIDTH):
             self.playerLose()
 
-        if self.player.hitbox and self.player.hitbox.colliderect(pygame.rect.Rect(self.endx, self.endy, WIDTH_CELL, HEIGHT_CELL)):
-            print("tu as gagné")
 
         self.player.draw(screen)
 
+        if self.player.hitbox and self.player.hitbox.colliderect(
+                pygame.rect.Rect(self.endx, self.endy, WIDTH_CELL, HEIGHT_CELL)):
+            return 1
+        else:
+            return 0
 
     def playerLose(self):
         self.player.x = self.startx

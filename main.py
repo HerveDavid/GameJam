@@ -6,6 +6,7 @@ from ennemy import *
 from game import Game
 from  maps import *
 import pygame.freetype
+from  changementSalles import *
 from tkinter import *
 
 pygame.font.init()
@@ -61,9 +62,13 @@ def display_credits(screen):
 
 def main(screen: pygame.display) -> None:
 
-    player = Player(WIDTH_CENTER, 0)
     #--------------------------------------------------------------------------------
-    game = Game(map=etage2, fond=fond2, objets=(), player=player, enemies=enemies2)
+    salles = {
+        1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemies1),
+        2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2),
+    }
+    index = 1
+    game = salles[index]
     #--------------------------------------------------------------------------------
     clock = pygame.time.Clock()
 
@@ -94,10 +99,18 @@ def main(screen: pygame.display) -> None:
 
     sounds_ambient = []
     sounds_ambient.append(sound_blow)
-
-    while RUNNING:
+    running = TRUE
+    while running:
         events()
-        game.display(screen)
+        #------------------------------------------
+        if game.display(screen):
+            index += 1
+            if index > len(salles):
+                print("fin du jeu")
+            else:
+              game = salles[index]
+
+        #------------------------------------------
         game.playMixerEnnemy(channels[1], sounds_minotaur)
         game.playMixerPlayer(channels[0], sound_player_jump, sound_flute, sound_step)
         game.playMixerAmbiant(channels[2], sound_blow)
