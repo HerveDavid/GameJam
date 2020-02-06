@@ -36,15 +36,25 @@ class Platform():
         # if player.xVelocity != 0:
         if self.type != 7 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
 
+            if  player.y > self.hitbox.y + self.hitbox.height:
+                player.y += 20
+
             if player.x < self.hitbox.x:
                 player.x = self.hitbox.x - self.hitbox.width / 2
             elif player.x > self.hitbox.x:
                 player.x = self.hitbox.x + WIDTH_CELL + 20
+            #
+            # if player.x < self.hitbox.x:
+            #     player.x = self.hitbox.x - self.hitbox.width / 2
+            # elif player.x > self.hitbox.x:
+            #     player.x = self.hitbox.x + WIDTH_CELL + 20
 
             # if not player.flip :
             #     player.x += -player.xVelocity
             # else:
             #     player.x += -player.xVelocity
+
+            None
 
 
 

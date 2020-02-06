@@ -11,7 +11,8 @@ class Player():
         self.sprites = {
             'run': Sprite('Assets/Player/run.png', 8, 1),
             'blow': Sprite('Assets/Player/joueur_souffle.png', 20, 1),
-            'idle': Sprite('Assets/Player/idle.png', 4, 1)
+            'idle': Sprite('Assets/Player/idle.png', 4, 1),
+            'chute': Sprite('Assets/Player/player_chute.png', 4, 1)
         }
 
         # Initialisation position
@@ -140,19 +141,27 @@ class Player():
         self.events()
         self.move()
 
-        self.hitbox = pygame.rect.Rect(self.x + self.sprites['run'].handle[1][0],
-                                       self.y + self.sprites['run'].handle[8][1] -5,
-                                       self.sprites['run'].cells[0][2],
-                                       self.sprites['run'].cells[0][3] + 5
-                                       )
+        s = ''
 
         if self.blow:
             self.sprites['blow'].draw(fenetre, self.x, self.y, self.flip)
+            s = 'blow'
+        elif self.falling:
+            self.sprites['chute'].draw(fenetre, self.x, self.y, self.flip)
+            s = 'chute'
         elif self.xVelocity == 0:
             self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
+            s = 'idle'
         elif self.jumping or self.flip:
             self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
+            s = 'run'
         else:
             self.sprites['run'].draw(fenetre, self.x, self.y, self.flip)
+            s='run'
 
-
+        self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0],
+                                       self.y + self.sprites[s].handle[7][1],
+                                       self.sprites[s].cells[0][2],
+                                       self.sprites[s].cells[0][3]
+                                       )
+        pygame.draw.rect(fenetre, [255, 0, 0], self.hitbox)
