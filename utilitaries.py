@@ -31,7 +31,9 @@ TUILES = {
     14: Sprite('Assets/Textures/sortie.png', 1, 1, colorkey=False),
     15: Sprite('Assets/Textures/mix.png', 1, 1, colorkey=False),
     16: Sprite('Assets/Textures/car_cas.png', 1, 1, colorkey=False),
-    17: Sprite('Assets/Textures/sol_cassed.png', 1, 1, colorkey=False)
+    17: Sprite('Assets/Textures/sol_cassed.png', 1, 1, colorkey=False),
+    18: Sprite('Assets/Textures/granite.png', 1, 1, colorkey=False),
+    19: Sprite('Assets/Textures/granite_casseg.png', 1, 1, colorkey=False),
 
 }
 
@@ -51,9 +53,15 @@ TUILES_FOND = {
     14: Sprite('Assets/Background/fond_car_trou02.png', 1, 1, colorkey=False),
     15: Sprite('Assets/Background/fond_car_trou03.png', 1, 1, colorkey=False),
     16: Sprite('Assets/Background/bol.png', 1, 1, colorkey=False),
-    17: Sprite('Assets/Background/fond_car_light.png', 1, 1, colorkey=False)
-
-
+    17: Sprite('Assets/Background/fond_car_light.png', 1, 1, colorkey=False),
+    18: Sprite('Assets/Background/granite_basd.png', 1, 1, colorkey=False),
+    19: Sprite('Assets/Background/granite_base.png', 1, 1, colorkey=False),
+    20: Sprite('Assets/Background/granite_basg.png', 1, 1, colorkey=False),
+    21: Sprite('Assets/Background/granite_casseg_back.png', 1, 1, colorkey=False),
+    22: Sprite('Assets/Background/granite_colonne.png', 1, 1, colorkey=False),
+    23: Sprite('Assets/Background/granite_hautd.png', 1, 1, colorkey=False),
+    24: Sprite('Assets/Background/granite_hautg.png', 1, 1, colorkey=False),
+    25: Sprite('Assets/Background/granite_back.png', 1, 1, colorkey=False)
 
 }
 
