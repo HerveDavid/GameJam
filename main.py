@@ -31,7 +31,7 @@ bg = pygame.image.load("Assets/Background/main_bg.jpg")
 bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 babel = pygame.image.load("Assets/Background/babel.png")
 
-# tour = Sprite('Assets/Background/background_accueil.png', 1, 1, colorkey=False)
+# tour = Sprite('Assets/Background/background_accueil.png', 1, 1, scale=2, colorkey=False)
 # tour = pygame.image.load('Assets/Background/background_accueil.png')
 # perso_assie = Sprite('Assets/Player/perso_assi.png', 10, 1, scale=4)
 
@@ -41,6 +41,9 @@ button_height = 80
 
 # Menu principal
 def start_menu(screen):
+
+    bgaccueil = Sprite('Assets/Background/background_accueil.png', 1, 1, scale=2.68)
+    persoassie = Sprite('Assets/Player/perso_assi.png', 10, 3, scale=2.5)
 
     if not pygame.mixer.get_busy():
         pygame.init()
@@ -52,10 +55,13 @@ def start_menu(screen):
     start = True
     while start:
         clock.tick(70)
+        bgaccueil.draw(screen, 0, 0, handle=0)
+        persoassie.draw(screen, 500, 228, handle=0)
+
         #2.56
         # tour.draw(screen, 0, 0 )
-        # screen.blit(tour, (0, 0))
-        screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
+        # screen.blit(bg, (0, 0))
+        # screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
         # tour.draw(screen, 0, 0)
         # perso_assie.draw(screen, 100, 100)
 
@@ -114,7 +120,7 @@ def display_credits(screen):
     text_credits_ideos = font_content.render('Jeu développé par l\'équipe IDEOS', True, white)
 
 
-    text_credits_game_design = font_content.render('Game Design : Mike le Québecois', True, white)
+    text_credits_game_design = font_content.render('Game Design : HECK Mike', True, white)
     text_credits_developpers = font_content.render('Développement : HERVE David, GODEFROID Louis, PEYRIN Florent', True, white)
     text_credits_level_design = font_content.render('Level Design : GODEFROID Louis', True, white)
     text_credits_design = font_content.render('Graphisme : VIALLON Gabriel', True, white)
@@ -153,6 +159,8 @@ def display_credits(screen):
         screen.blit(text_back, (WIDTH - (marge + (button_width - 60)),HEIGHT - (marge + 75)))
 
         pygame.display.flip()
+        screen.fill((0, 0, 0))
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -239,6 +247,8 @@ def display_instructions(screen):
         screen.blit(text_back, (WIDTH - (marge + (button_width - 60)),HEIGHT - (marge + 75)))
 
         pygame.display.flip()
+        screen.fill((0, 0, 0))
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -312,7 +322,7 @@ def main(screen: pygame.display) -> None:
         game.playMixerPlayer(channels[0], sound_player_jump, sound_flute, sound_step)
         game.playMixerAmbiant(channels[2], sound_blow)
         pygame.display.update()
-        screen.fill((35, 118, 211))
+        screen.fill((0, 0, 0))
         
         clock.tick(FPS)
 
