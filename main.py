@@ -121,7 +121,7 @@ def display_instructions(screen):
     text_instructions_content = font.render('COMMANDES :', True, white)
 
     text_instructions_resume = font_content.render('Après avoir reçu la bénédiction d\'Eole, le flûtiste Alexios fût contraint de gravir au sommet de la ', True, white)
-    text_instructions_resume2 = font_content.render('Tour zizi afin de prouver sa bravoure.', True, white)
+    text_instructions_resume2 = font_content.render('Tour des Dieux afin de prouver sa bravoure.', True, white)
     text_instructions_resume3 = font_content.render('Accompagné de son instrument enchanté, il allait devoir braver les plus grands dangers ', True, white)
     text_instructions_resume4 = font_content.render('et atteindre le sommet sans recourir aux armes ou à la violence...', True, white)
 
@@ -144,7 +144,7 @@ def display_instructions(screen):
     text_instructions_siren1 = font_content.render('Elle vous attendra sur son rocher en', True, white)
     text_instructions_siren2 = font_content.render('chantant afin de vous attirer.', True, white)
     text_instructions_siren3 = font_content.render('Restez en dehors de sa portée pour', True, white)
-    text_instructions_siren4 = font_content.render('restez en vie !', True, white)
+    text_instructions_siren4 = font_content.render('rester en vie !', True, white)
 
     img_siren = pygame.image.load("Assets/Siren/sirene_normale.png")
 
