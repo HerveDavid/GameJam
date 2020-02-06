@@ -104,7 +104,7 @@ class Game():
                 self.player.stream.fear(self.enemies)
             if abs(self.get_time() - self.time) > 2:
                 self.player.setStream(0)
-                self.player.blow = True
+                self.player.blow = False
                 self.time = 0
 
 
@@ -142,14 +142,14 @@ class Game():
                 channel.play(random_sound)
 
     def playMixerPlayer(self, channel, sound_jump, sound_flute, sound_step):
-        channel.set_volume(1)
+        channel.set_volume(0.6)
         if self.player.jumping:
             if not channel.get_busy():
                 if not self.player.falling:
                     channel.play(sound_jump)
         if self.player.blow:
             if not channel.get_busy():
-                    channel.set_volume(0.3)
+                    channel.set_volume(0.1)
                     channel.play(sound_flute)
         if self.player.xVelocity != 0 and self.player.falling == False and self.player.jumping == False:
             if not channel.get_busy():
