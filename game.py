@@ -133,7 +133,7 @@ class Game():
         pygame.mixer.init()
         pygame.mixer.music.load("Audio/1.mp3")
         pygame.mixer.music.play(-1)
-        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.set_volume(0.3)
 
 
     def playMixerEnnemy(self, channel, sounds):
@@ -144,22 +144,22 @@ class Game():
                 channel.play(random_sound)
 
     def playMixerPlayer(self, channel, sound_jump, sound_flute, sound_step):
-        channel.set_volume(0.4)
+        channel.set_volume(0.3)
         if self.player.jumping:
             if not channel.get_busy():
                 if not self.player.falling:
                     channel.play(sound_jump)
         if self.player.blow:
             if not channel.get_busy():
-                    channel.set_volume(0.1)
+                    channel.set_volume(0.2)
                     channel.play(sound_flute)
         if self.player.xVelocity != 0 and self.player.falling == False and self.player.jumping == False:
             if not channel.get_busy():
-                channel.set_volume(0.3)
+                channel.set_volume(0.4)
                 channel.play(sound_step)
 
     def playMixerAmbiant(self, channel, sound):
-        channel.set_volume(0.4)
+        channel.set_volume(0.8)
         if not channel.get_busy():
             channel.play(sound)
 
