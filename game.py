@@ -1,7 +1,7 @@
 from plateforme import *
 from ennemy import *
 import math
-
+from datetime import datetime
 import random
 
 class Game():
@@ -20,7 +20,7 @@ class Game():
         self.endx = 0
         self.endy = 0
         self.score = 0
-
+        self.time = 0
         self.load()
 
 
@@ -95,8 +95,40 @@ class Game():
                     self.playerLose()
 
         if self.player.stream.dir != 0:
-            self.player.stream.draw(screen, self.player.flip)
-            self.player.stream.fear(self.enemies)
+
+            if self.time == 0:
+                self.time = self.get_time()
+
+            if abs(self.get_time() - self.time) <= 2:
+                self.player.stream.draw(screen, self.player.flip)
+                self.player.stream.fear(self.enemies)
+                print(self.get_time() - self.time )
+            if abs(self.get_time() - self.time) > 2:
+                self.player.setStream(0)
+                self.player.blow = True
+                self.time = 0
+
+                #     if self.duration == 0:
+        #         self.duration = self.get_time()
+        #         self.player.stream.draw(screen, self.player.flip)
+        #         self.player.stream.fear(self.enemies)
+        #     elif self.get_time() - self.duration <= 3 and self.get_time() - self.duration > 0:
+        #         print(self.get_time() - self.duration)
+        #         self.player.stream.draw(screen, self.player.flip)
+        #         self.player.stream.fear(self.enemies)
+        #
+        # else :
+        #     self.player.setStream(0)
+        #     self.duration = 0
+
+
+        # else:
+        #     self.player.setStream(0)
+        #     self.player.glissement = False
+        #     self.player.blow = False
+        #     self.duration = 0
+
+
 
         if (self.player.y >= HEIGHT and self.player.falling)\
                 or (self.player.x < 0 or self.player.x > WIDTH):
@@ -150,3 +182,12 @@ class Game():
         channel.set_volume(0.4)
         if not channel.get_busy():
             channel.play(sound)
+
+    def get_time(self):
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        now = int(dt_string[len(dt_string) - 2] + dt_string[len(dt_string) - 1])
+        if now == 0:
+            return 1
+        else:
+            return now
