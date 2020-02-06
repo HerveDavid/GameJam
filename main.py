@@ -16,7 +16,7 @@ pygame.init()
 white = pygame.color.Color('#ffffff')
 red = pygame.color.Color('#ff0000')
 black = pygame.color.Color('#000000')
-
+clock = pygame.time.Clock()
 font = pygame.font.Font('Font/Pixeled.ttf', 20)
 # font_content = pygame.font.Font(None, 30)
 font_content = pygame.font.Font('Font/FreePixel.ttf', 18)
@@ -40,6 +40,7 @@ def start_menu(screen):
 
     start = True
     while start:
+        clock.tick(70)
         screen.blit(bg, (0, 0))
         screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
 
@@ -225,9 +226,6 @@ def display_instructions(screen):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if action is not None:
                     return action
-
-
-
 
 def main(screen: pygame.display) -> None:
 
