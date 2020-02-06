@@ -141,7 +141,6 @@ def display_credits(screen):
                 if action is not None:
                     return action
 
-
 def display_instructions(screen):
 
     text_instructions_content = font.render('COMMANDES :', True, white)
@@ -231,6 +230,7 @@ def main(screen: pygame.display) -> None:
 
     #--------------------------------------------------------------------------------
     salles = {
+        0: Game(map=etagetest, fond=fondtest, objets=(), player=Player(0, 0), enemies=()),
         1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemies1),
         2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2),
         3: Game(map=etage3, fond=fond3, objets=(), player=Player(0, 0), enemies=enemies3),
@@ -238,7 +238,7 @@ def main(screen: pygame.display) -> None:
         5: Game(map=etage5, fond=fond5, objets=(), player=Player(0, 0), enemies=enemies5)
     }
     index = 1
-    game = salles[index]
+    game = salles[0]
     #--------------------------------------------------------------------------------
     clock = pygame.time.Clock()
 
