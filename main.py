@@ -88,7 +88,7 @@ def start_menu(screen):
 
 def display_credits(screen):
 
-    text_credits_content = font.render('Voici les crédits :', True, white)
+    text_credits_content = font.render('CREDITS :', True, white)
 
     while True:
         action = None
