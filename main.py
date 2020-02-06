@@ -17,8 +17,10 @@ white = pygame.color.Color('#ffffff')
 red = pygame.color.Color('#ff0000')
 black = pygame.color.Color('#000000')
 
-font = pygame.font.Font(None, 50)
-font_content = pygame.font.Font(None, 30)
+font = pygame.font.Font('Font/Pixeled.ttf', 20)
+# font_content = pygame.font.Font(None, 30)
+font_content = pygame.font.Font('Font/FreePixel.ttf', 18)
+
 text = font.render('A BOUT DE SOUFFLE', True, white)
 text_play = font.render('Jouer', True, white)
 text_instructions = font.render('Commandes', True, white)
@@ -52,29 +54,32 @@ def start_menu(screen):
         if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 30 and pos[1] <= HEIGHT/2 + 30 + button_height:
             colour = white
             action = "start"
-            bt = Sprite('Assets/boutons/button.png', 1, 1, scale=4, colorkey=0)
             bt.draw(screen, WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, handle=0)
 
-
+        bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
 
         colour = red
         if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "credits"
+            bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
 
-        pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+        # pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+
+        bt.draw(screen, marge, HEIGHT - (button_height + marge), button_width, handle=0)
 
         colour = red
         if pos[0] >= marge and pos[0] <= marge + button_width and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "instructions"
+            bt.draw(screen, marge, HEIGHT - (button_height + marge), button_width, handle=0)
 
-        pygame.draw.rect(screen, colour, (marge, HEIGHT - (button_height + marge), button_width, button_height))
+        # pygame.draw.rect(screen, colour, (marge, HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text, (WIDTH/2 - text.get_rect().width/2, 100))
-        screen.blit(text_play, (WIDTH / 2 - text_play.get_rect().width / 2, HEIGHT/2 + 50))
-        screen.blit(text_instructions, (marge + 15, HEIGHT - (marge + 60)))
-        screen.blit(text_credits, (WIDTH - (marge + (button_width - 50)), HEIGHT - (marge + 60)))
+        screen.blit(text_play, (WIDTH / 2 - text_play.get_rect().width / 2, HEIGHT/2 + 36))
+        screen.blit(text_instructions, (marge + 15, HEIGHT - (marge + 75)))
+        screen.blit(text_credits, (WIDTH - (marge + (button_width - 50)), HEIGHT - (marge + 75)))
 
         pygame.display.flip()
 
@@ -95,12 +100,16 @@ def display_credits(screen):
         pos = pygame.mouse.get_pos()
         screen.fill(black)
 
+        bt = Sprite('Assets/boutons/button.png', 1, 1, scale=4, colorkey=0)
+        bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
+
         colour = red
         if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "back"
+            bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
 
-        pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+        # pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text_credits_content, (marge, marge))
         screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
@@ -154,11 +163,15 @@ def display_instructions(screen):
         screen.fill(black)
 
         colour = red
+        bt = Sprite('Assets/boutons/button.png', 1, 1, scale=4, colorkey=0)
+        bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
+
         if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "back"
+            bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
 
-        pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+        # pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text_instructions_content, (marge, marge))
         screen.blit(text_instructions_resume, (marge, marge + 60))
