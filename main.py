@@ -38,11 +38,12 @@ button_height = 80
 # Menu principal
 def start_menu(screen):
 
-    pygame.init()
-    pygame.mixer.init()
-    pygame.mixer.music.load("Audio/2.mp3")
-    pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.5)
+    if not pygame.mixer.get_busy():
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.music.load("Audio/2.mp3")
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.5)
 
     start = True
     while start:
