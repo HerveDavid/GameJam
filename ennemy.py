@@ -49,7 +49,7 @@ class   Minotaur(Ennemy):
         self.sprites = {
             'idle': Sprite('Assets/Minotaur/min_idle_light.png', 10, 1, 2),
             'idleNo': Sprite('Assets/Minotaur/min_idle_NOlight.png', 10, 1, 2),
-            'walks': Sprite('Assets/Minotaur/min_walking.png', 10, 1, 2),
+            'walks': Sprite('Assets/Minotaur/min_walking.png', 10, 1, 2)
         }
 
         self.light = Light(self.x, self.y)

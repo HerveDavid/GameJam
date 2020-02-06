@@ -79,9 +79,10 @@ class Flag(Platform):
 
         super(Flag, self).__init__(x, y)
 
-        self.spriteNoWind =  copy.copy(Sprite('Assets/Textures/drapeau.png', 10, 1))
-        self.sprite = copy.copy(Sprite('Assets/Textures/drapeau_vent.png', 10, 1))
+        self.spriteNoWind =  Sprite('Assets/Textures/drapeau.png', 10, 1)
+        self.sprite = Sprite('Assets/Textures/drapeau_vent.png', 10, 1)
 
+        self.flip = True
         self.hitbox = None
         self.wind = False
 
@@ -97,34 +98,25 @@ class Flag(Platform):
         else:
             self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
 
-# class Rambarde(Flag):
-#
-#     def __init__(self, x, y):
-#
-#         super(Flag, self).__init__(x, y)
-#
-#         self.rambardeHaute =  copy.copy(Sprite('Assets/Textures/rambarbe_haute.png', 1, 1))
-#         self.rambardeMonte = copy.copy(Sprite('Assets/Textures/rambarde_monte.png', 4, 1))
-#         self.rambardeBasse = copy.copy(Sprite('Assets/Textures/rambarde_monte.png', 1, 1))
-#
-#         # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
-#         #                                self.y + self.sprite.handle[0][1],
-#         #                                self.sprite.cellWidth,
-#         #                                self.sprite.cellHeight
-#         #                                )
-#
-#         self.hitbox = None
-#         self.wind = False
-#
-#     def test(self, player):
-#         return None
+class Rambarde(Flag):
 
-    # def draw(self, screen):
-    #
-    #     if self.wind:
-    #         self.sprite.draw(screen, self.x + 12, self.y + 8, flip=self.flip, handle=0)
-    #     else:
-    #         self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
+    def __init__(self, x, y):
+
+        super(Flag, self).__init__(x, y)
+
+        self.sprites = {
+            'rambardeHaute': Sprite('Assets/Textures/rambarbe_haute.png', 1, 1),
+            'rambardeMonte': Sprite('Assets/Textures/rambarde_monte.png', 4, 1),
+            'rambardeBasse': Sprite('Assets/Textures/rambarde_basse.png', 1, 1)
+        }
+
+
+    def test(self, player):
+        None
+
+    def draw(self, screen):
+
+        None
 
 class Fond(Platform):
 
