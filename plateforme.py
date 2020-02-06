@@ -82,13 +82,6 @@ class Flag(Platform):
         self.spriteNoWind =  copy.copy(Sprite('Assets/Textures/drapeau.png', 10, 1))
         self.sprite = copy.copy(Sprite('Assets/Textures/drapeau_vent.png', 10, 1))
 
-        # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
-        #                                self.y + self.sprite.handle[0][1],
-        #                                self.sprite.cellWidth,
-        #                                self.sprite.cellHeight
-        #                                )
-
-        self.flip = True
         self.hitbox = None
         self.wind = False
 
@@ -104,36 +97,34 @@ class Flag(Platform):
         else:
             self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
 
-class Rambarde(Platform):
+# class Rambarde(Flag):
+#
+#     def __init__(self, x, y):
+#
+#         super(Flag, self).__init__(x, y)
+#
+#         self.rambardeHaute =  copy.copy(Sprite('Assets/Textures/rambarbe_haute.png', 1, 1))
+#         self.rambardeMonte = copy.copy(Sprite('Assets/Textures/rambarde_monte.png', 4, 1))
+#         self.rambardeBasse = copy.copy(Sprite('Assets/Textures/rambarde_monte.png', 1, 1))
+#
+#         # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
+#         #                                self.y + self.sprite.handle[0][1],
+#         #                                self.sprite.cellWidth,
+#         #                                self.sprite.cellHeight
+#         #                                )
+#
+#         self.hitbox = None
+#         self.wind = False
+#
+#     def test(self, player):
+#         return None
 
-    def __init__(self, x, y):
-
-        super(Flag, self).__init__(x, y)
-
-        self.r =  copy.copy(Sprite('Assets/Textures/drapeau.png', 10, 1))
-        self.sprite = copy.copy(Sprite('Assets/Textures/drapeau_vent.png', 10, 1))
-
-        # self.hitbox = pygame.rect.Rect(self.x + self.sprite.handle[0][0],
-        #                                self.y + self.sprite.handle[0][1],
-        #                                self.sprite.cellWidth,
-        #                                self.sprite.cellHeight
-        #                                )
-
-        self.flip = True
-        self.hitbox = None
-        self.wind = False
-
-    def test(self, player):
-        self.wind = player.stream.dir in [1, 2]
-        self.flip = player.stream.dir == 1
-        return None
-
-    def draw(self, screen):
-
-        if self.wind:
-            self.sprite.draw(screen, self.x + 12, self.y + 8, flip=self.flip, handle=0)
-        else:
-            self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
+    # def draw(self, screen):
+    #
+    #     if self.wind:
+    #         self.sprite.draw(screen, self.x + 12, self.y + 8, flip=self.flip, handle=0)
+    #     else:
+    #         self.spriteNoWind.draw(screen, self.x + 12, self.y +8,flip=self.flip, handle=0)
 
 class Fond(Platform):
 
