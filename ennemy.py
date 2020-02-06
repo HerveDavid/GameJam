@@ -1,6 +1,7 @@
 from sprite import Sprite
 from player import Player
 from utilitaries import *
+from light import Light
 
 class Ennemy():
 
@@ -51,6 +52,8 @@ class   Minotaur(Ennemy):
             'walks': Sprite('Assets/Minotaur/min_walking.png', 10, 1, 2),
         }
 
+        self.light = Light(self.x, self.y)
+
         self.start = start
         self.end = end
         self.peur = False
@@ -63,6 +66,7 @@ class   Minotaur(Ennemy):
 
     def move(self):
         self.x += self.velocity
+        self.light.x += self.velocity
 
     def attack(self):
 
@@ -76,12 +80,16 @@ class   Minotaur(Ennemy):
             self.events()
             self.move()
 
+            self.light.draw(fenetre)
+
             if self.velocity == 0:
                 self.sprites['idle'].draw(fenetre, self.x, self.y, self.flip)
                 s = 'idle'
             else:
                 self.sprites['walks'].draw(fenetre, self.x, self.y, self.flip)
                 s = 'walks'
+
+
 
         else:
             self.hitbox = None
