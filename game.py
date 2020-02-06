@@ -8,6 +8,7 @@ class Game():
 
     def __init__(self, map: (), fond:  (), objets: (), player, enemies):
 
+        self.fondecran = Sprite('Assets/Background/background_nuit.png', 1, 1, colorkey=False, scale=2.56)
         self.map = map
         self.fond = fond
         self.objets = objets
@@ -72,6 +73,7 @@ class Game():
 
     def display(self, screen):
 
+        self.fondecran.draw(screen, 0, 0, handle=0)
 
         self.background.draw(screen)
 
