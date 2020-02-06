@@ -31,6 +31,9 @@ bg = pygame.image.load("Assets/Background/main_bg.jpg")
 bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 babel = pygame.image.load("Assets/Background/babel.png")
 
+# tour = Sprite('Assets/Background/background_accueil.png', 1, 1, colorkey=False)
+# perso_assie = Sprite('Assets/Player/perso_assi.png', 10, 1, scale=4)
+
 marge = 40
 button_width = 240
 button_height = 80
@@ -50,6 +53,8 @@ def start_menu(screen):
         clock.tick(70)
         screen.blit(bg, (0, 0))
         screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
+        # tour.draw(screen, 0, 0)
+        # perso_assie.draw(screen, 100, 100)
 
         action = None
         pos = pygame.mouse.get_pos()
@@ -255,7 +260,7 @@ def main(screen: pygame.display) -> None:
         9: Game(map=etage9, fond=fond9, objets=(), player=Player(0, 0), enemies=enemies9)
 
     }
-    index = 9
+    index = 1
     game = salles[index]
     #--------------------------------------------------------------------------------
     clock = pygame.time.Clock()
