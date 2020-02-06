@@ -112,7 +112,7 @@ def display_credits(screen):
         # pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
 
         screen.blit(text_credits_content, (marge, marge))
-        screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
+        screen.blit(text_back, (WIDTH - (marge + (button_width - 60)),HEIGHT - (marge + 75)))
 
         pygame.display.flip()
 
@@ -198,7 +198,7 @@ def display_instructions(screen):
         screen.blit(text_instructions_siren3, (marge + 500, marge + 515))
         screen.blit(text_instructions_siren4, (marge + 500, marge + 545))
 
-        screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
+        screen.blit(text_back, (WIDTH - (marge + (button_width - 60)),HEIGHT - (marge + 75)))
 
         pygame.display.flip()
 
