@@ -97,9 +97,9 @@ class   Minotaur(Ennemy):
             s = 'idleNo'
             self.peur = False
 
-        self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0],
+        self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0] - 20,
                                        self.y + self.sprites[s].handle[7][1],
-                                       self.sprites[s].cells[0][2] - 20,
+                                       self.sprites[s].cells[0][2] + 30,
                                        self.sprites[s].cells[0][3]
                                        )
 
