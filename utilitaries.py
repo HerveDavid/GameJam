@@ -28,7 +28,10 @@ TUILES = {
     11: Sprite('Assets/Textures/carrelage_plateforme.png',1,1,colorkey=False),
     12: Sprite('Assets/Textures/carrelage_sol.png', 1, 1, colorkey=False),
     13: Sprite('Assets/Textures/carrelage_sol_cote.png', 1, 1, colorkey=False),
-    14: Sprite('Assets/Textures/sortie.png', 1, 1, colorkey=False)
+    14: Sprite('Assets/Textures/sortie.png', 1, 1, colorkey=False),
+    15: Sprite('Assets/Textures/mix.png', 1, 1, colorkey=False),
+    16: Sprite('Assets/Textures/car_cas.png', 1, 1, colorkey=False),
+    17: Sprite('Assets/Textures/sol_cassed.png', 1, 1, colorkey=False)
 
 }
 
@@ -40,9 +43,18 @@ TUILES_FOND = {
     5: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
     6: Sprite('Assets/Background/fond_light.png', 1, 1, colorkey=False),
     7: Sprite('Assets/Background/fonds_cassed.png',1,1, colorkey= False),
-    8: Sprite('Assets/Background/fond_casseg.png',1,1,colorkey=False),
+    8: Sprite('Assets/Background/fond_car_casseg.png',1,1,colorkey=False),
     10: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
-    11: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False)
+    11: Sprite('Assets/Background/fond_trou04.png', 1, 1, colorkey=False),
+    12: Sprite('Assets/Background/fond_car.png', 1, 1, colorkey=False),
+    13: Sprite('Assets/Background/fond_car-trou01.png', 1, 1, colorkey=False),
+    14: Sprite('Assets/Background/fond_car_trou02.png', 1, 1, colorkey=False),
+    15: Sprite('Assets/Background/fond_car_trou03.png', 1, 1, colorkey=False),
+    16: Sprite('Assets/Background/bol.png', 1, 1, colorkey=False),
+    17: Sprite('Assets/Background/fond_car_light.png', 1, 1, colorkey=False)
+
+
+
 }
 
 OBJETS = {

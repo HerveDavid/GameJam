@@ -231,11 +231,13 @@ def main(screen: pygame.display) -> None:
 
     #--------------------------------------------------------------------------------
     salles = {
-        1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemies1),
+        1: Game(map=etage5, fond=fond5, objets=(), player=Player(0, 0), enemies=enemies5),
         2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2),
         3: Game(map=etage3, fond=fond3, objets=(), player=Player(0, 0), enemies=enemies3),
         4: Game(map=etage4, fond=fond4, objets=(), player=Player(0, 0), enemies=enemies4),
-        5: Game(map=etage5, fond=fond5, objets=(), player=Player(0, 0), enemies=enemies5)
+        5: Game(map=etage5, fond=fond5, objets=(), player=Player(0, 0), enemies=enemies5),
+        6: Game(map=etage6, fond=fond6, objets=(), player=Player(0, 0), enemies=enemies6)
+
     }
     index = 1
     game = salles[index]
