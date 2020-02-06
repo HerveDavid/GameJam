@@ -38,6 +38,13 @@ button_height = 80
 # Menu principal
 def start_menu(screen):
 
+    if not pygame.mixer.get_busy():
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.music.load("Audio/2.mp3")
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.5)
+
     start = True
     while start:
         clock.tick(70)
@@ -105,6 +112,9 @@ def display_credits(screen):
     text_credits_design = font_content.render('Graphisme : VIALLON Gabriel', True, white)
     text_credits_sound_design = font_content.render('Sound Design : PEYRIN Florent', True, white)
 
+    text_credits_sound_original = font_content.render('Bande son originale composée par PEYRIN Florent', True, white)
+    text_credits_graphism_original = font_content.render('Dessins originaux et animations élaborés par VIALLON Gabriel', True, white)
+
     while True:
         action = None
         pos = pygame.mouse.get_pos()
@@ -128,6 +138,9 @@ def display_credits(screen):
         screen.blit(text_credits_level_design, (marge, marge + 240))
         screen.blit(text_credits_design, (marge, marge + 290))
         screen.blit(text_credits_sound_design, (marge, marge + 340))
+
+        screen.blit(text_credits_sound_original, (marge, marge + 390))
+        screen.blit(text_credits_graphism_original, (marge, marge + 440))
 
         screen.blit(text_back, (WIDTH - (marge + (button_width - 60)),HEIGHT - (marge + 75)))
 
