@@ -32,6 +32,7 @@ bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 babel = pygame.image.load("Assets/Background/babel.png")
 
 # tour = Sprite('Assets/Background/background_accueil.png', 1, 1, colorkey=False)
+# tour = pygame.image.load('Assets/Background/background_accueil.png')
 # perso_assie = Sprite('Assets/Player/perso_assi.png', 10, 1, scale=4)
 
 marge = 40
@@ -51,7 +52,9 @@ def start_menu(screen):
     start = True
     while start:
         clock.tick(70)
-        screen.blit(bg, (0, 0))
+        #2.56
+        # tour.draw(screen, 0, 0 )
+        # screen.blit(tour, (0, 0))
         screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
         # tour.draw(screen, 0, 0)
         # perso_assie.draw(screen, 100, 100)
@@ -300,6 +303,7 @@ def main(screen: pygame.display) -> None:
             index += 1
             if index > len(salles):
                 print("fin du jeu")
+                return None
             else:
               game = salles[index]
 
@@ -316,12 +320,11 @@ if __name__ == '__main__':
 
     screen = init()
     menu = True
-
-    while True:
+    while RUNNING:
         if menu:
             ans = start_menu(screen)
             if ans == "start":
-                menu = False
+                # menu = False
                 main(screen)
             elif ans == "credits":
                 menu = False
