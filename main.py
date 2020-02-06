@@ -19,11 +19,17 @@ black = pygame.color.Color('#000000')
 font = pygame.font.Font(None, 60)
 text = font.render('A Bout De Souffle', True, white)
 
+bg = pygame.image.load("Assets/Background/main_bg.jpg")
+babel = pygame.image.load("Assets/Background/babel.png")
+
+
 # Menu principal
 def start_menu(screen):
 
     start = True
     while start:
+        screen.blit(bg, (0, 0))
+        screen.blit(babel, ((0.5*WIDTH)-(0.5*babel.get_width()),(0.5*HEIGHT)-(0.5*babel.get_height())))
 
         action = None
         pos = pygame.mouse.get_pos()
@@ -38,7 +44,6 @@ def start_menu(screen):
             action = "start"
 
         pygame.draw.rect(screen, colour, (WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, button_width, button_height))
-        pygame.display.flip()
 
         colour = red
         if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 180 and pos[1] <= HEIGHT/2 + 180 + button_height:
