@@ -63,7 +63,7 @@ def main(screen: pygame.display) -> None:
 
     player = Player(WIDTH_CENTER, 0)
     #--------------------------------------------------------------------------------
-    game = Game(map=etage2, fond=fond2, objets=(), player=player, enemies=enemies2)
+    game = Game(map=etage4, fond=fond4, objets=(), player=player, enemies=enemies4)
     #--------------------------------------------------------------------------------
     clock = pygame.time.Clock()
 
