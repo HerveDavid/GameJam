@@ -102,32 +102,10 @@ class Game():
             if abs(self.get_time() - self.time) <= 2:
                 self.player.stream.draw(screen, self.player.flip)
                 self.player.stream.fear(self.enemies)
-                print(self.get_time() - self.time )
             if abs(self.get_time() - self.time) > 2:
                 self.player.setStream(0)
                 self.player.blow = True
                 self.time = 0
-
-                #     if self.duration == 0:
-        #         self.duration = self.get_time()
-        #         self.player.stream.draw(screen, self.player.flip)
-        #         self.player.stream.fear(self.enemies)
-        #     elif self.get_time() - self.duration <= 3 and self.get_time() - self.duration > 0:
-        #         print(self.get_time() - self.duration)
-        #         self.player.stream.draw(screen, self.player.flip)
-        #         self.player.stream.fear(self.enemies)
-        #
-        # else :
-        #     self.player.setStream(0)
-        #     self.duration = 0
-
-
-        # else:
-        #     self.player.setStream(0)
-        #     self.player.glissement = False
-        #     self.player.blow = False
-        #     self.duration = 0
-
 
 
         if (self.player.y >= HEIGHT and self.player.falling)\
