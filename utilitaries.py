@@ -6,7 +6,7 @@ from sprite import Sprite
 # Constantes
 SIZE = WIDTH, HEIGHT= 1024, 768
 WIDTH_CENTER, HEIGHT_CENTER = int(WIDTH / 2), int(HEIGHT / 2)
-FPS = 10
+FPS = 12
 RUNNING = True
 NB_WIDTH_CELL = int(WIDTH / 72) + 1
 NB_HEIGTH_CELL = int(HEIGHT / 70) + 1
