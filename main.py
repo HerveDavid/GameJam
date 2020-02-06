@@ -78,7 +78,7 @@ def start_menu(screen):
 
         screen.blit(text, (WIDTH/2 - text.get_rect().width/2, 100))
         screen.blit(text_play, (WIDTH / 2 - text_play.get_rect().width / 2, HEIGHT/2 + 36))
-        screen.blit(text_instructions, (marge + 15, HEIGHT - (marge + 75)))
+        screen.blit(text_instructions, (marge + 30, HEIGHT - (marge + 75)))
         screen.blit(text_credits, (WIDTH - (marge + (button_width - 50)), HEIGHT - (marge + 75)))
 
         pygame.display.flip()
