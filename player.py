@@ -83,7 +83,7 @@ class Player():
                 self.flip = False
         else: self.xVelocity = 0
 
-        if keys[pygame.K_z] and not self.jumping and not self.falling:
+        if keys[pygame.K_SPACE] and not self.jumping and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
             self.blow = False
