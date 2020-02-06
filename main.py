@@ -16,12 +16,21 @@ white = pygame.color.Color('#ffffff')
 red = pygame.color.Color('#ff0000')
 black = pygame.color.Color('#000000')
 
-font = pygame.font.Font(None, 60)
+font = pygame.font.Font(None, 50)
 text = font.render('A Bout De Souffle', True, white)
+text_play = font.render('Jouer', True, white)
+text_instructions = font.render('Commandes', True, white)
+text_credits = font.render('Credits', True, white)
+text_back = font.render('Retour', True, white)
 
 bg = pygame.image.load("Assets/Background/main_bg.jpg")
+bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 babel = pygame.image.load("Assets/Background/babel.png")
+#babel = pygame.transform.scale(babel, (WIDTH/2))
 
+marge = 40
+button_width = 240
+button_height = 80
 
 # Menu principal
 def start_menu(screen):
@@ -33,11 +42,7 @@ def start_menu(screen):
 
         action = None
         pos = pygame.mouse.get_pos()
-        button_width = 240
-        button_height = 80
         colour = red
-
-        screen.blit(text, (WIDTH/2 - text.get_rect().width/2, 200))
 
         if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 30 and pos[1] <= HEIGHT/2 + 30 + button_height:
             colour = white
@@ -46,11 +51,24 @@ def start_menu(screen):
         pygame.draw.rect(screen, colour, (WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, button_width, button_height))
 
         colour = red
-        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 180 and pos[1] <= HEIGHT/2 + 180 + button_height:
+        if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
             colour = white
             action = "credits"
 
-        pygame.draw.rect(screen, colour, (WIDTH / 2 - button_width / 2, HEIGHT / 2 + 180, button_width, button_height))
+        pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+
+        colour = red
+        if pos[0] >= marge and pos[0] <= marge + button_width and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
+            colour = white
+            action = "instructions"
+
+        pygame.draw.rect(screen, colour, (marge, HEIGHT - (button_height + marge), button_width, button_height))
+
+        screen.blit(text, (WIDTH/2 - text.get_rect().width/2, 100))
+        screen.blit(text_play, (WIDTH / 2 - text_play.get_rect().width / 2, HEIGHT/2 + 50))
+        screen.blit(text_instructions, (marge + 15, HEIGHT - (marge + 60)))
+        screen.blit(text_credits, (WIDTH - (marge + (button_width - 50)), HEIGHT - (marge + 60)))
+
         pygame.display.flip()
 
         for event in pygame.event.get():
@@ -62,7 +80,65 @@ def start_menu(screen):
                     return action
 
 def display_credits(screen):
-    print("Bonjour c'est nous on a fait le jeu")
+
+    text_credits_content = font.render('Voici les crédits :', True, white)
+
+    while True:
+        action = None
+        pos = pygame.mouse.get_pos()
+        screen.fill(black)
+
+        colour = red
+        if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
+            colour = white
+            action = "back"
+
+        pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+
+        screen.blit(text_credits_content, (marge, marge))
+        screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if action is not None:
+                    return action
+
+
+def display_instructions(screen):
+
+    text_instructions_content = font.render('Voici les commandes :', True, white)
+
+    while True:
+        action = None
+        pos = pygame.mouse.get_pos()
+        screen.fill(black)
+
+        colour = red
+        if pos[0] >= WIDTH - (button_width + marge) and pos[0] <= WIDTH - marge and pos[1] >= HEIGHT - (button_height + marge) and pos[1] <= HEIGHT - marge:
+            colour = white
+            action = "back"
+
+        pygame.draw.rect(screen, colour, (WIDTH - (button_width + marge), HEIGHT - (button_height + marge), button_width, button_height))
+
+        screen.blit(text_instructions_content, (marge, marge))
+        screen.blit(text_back, (WIDTH - (marge + (button_width - 50)),HEIGHT - (marge + 60)))
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if action is not None:
+                    return action
+
+
 
 
 def main(screen: pygame.display) -> None:
@@ -129,9 +205,22 @@ def main(screen: pygame.display) -> None:
 if __name__ == '__main__':
 
     screen = init()
-    ans = start_menu(screen)
-    if ans == "start":
-        main(screen)
-    elif ans == "credits":
-        display_credits(screen)
+    menu = True
+
+    while True:
+        if menu:
+            ans = start_menu(screen)
+            if ans == "start":
+                menu = False
+                main(screen)
+            elif ans == "credits":
+                menu = False
+                ans2 = display_credits(screen)
+                if ans2 == "back":
+                    menu = True
+            elif ans == "instructions":
+                menu = False
+                ans3 = display_instructions(screen)
+                if ans3 == "back":
+                    menu = True
 
