@@ -80,6 +80,12 @@ class   Minotaur(Ennemy):
             self.events()
             self.move()
 
+            self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0] - 20,
+                                           self.y + self.sprites[s].handle[7][1],
+                                           self.sprites[s].cells[0][2] + 30,
+                                           self.sprites[s].cells[0][3]
+                                           )
+
             self.light.draw(fenetre)
 
             if self.velocity == 0:
@@ -97,11 +103,7 @@ class   Minotaur(Ennemy):
             s = 'idleNo'
             self.peur = False
 
-        self.hitbox = pygame.rect.Rect(self.x + self.sprites[s].handle[7][0] - 20,
-                                       self.y + self.sprites[s].handle[7][1],
-                                       self.sprites[s].cells[0][2] + 30,
-                                       self.sprites[s].cells[0][3]
-                                       )
+
 
         # pygame.draw.rect(fenetre,[255, 0, 0], self.hitbox)
 
@@ -120,8 +122,7 @@ class Sirene(Ennemy):
 
     def attire(self, player):
 
-        print("sous mon charge")
         if player.x < self.x:
-            player.x += 2
+            player.x += 5
         else:
-            player.x += -2
+            player.x += -5
