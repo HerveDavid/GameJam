@@ -1,4 +1,5 @@
 import pygame
+from utilitaries import *
 
 class Sprite():
 
