@@ -118,8 +118,10 @@ class Sirene(Ennemy):
         super(Sirene, self).__init__(x, y, 0)
 
         self.sprites = {
-            'idle': Sprite('Assets/Siren/sirene.png', 4, 1)
+            'idle': Sprite('Assets/Siren/sirene.png', 4, 1),
+            'aura': Sprite('Assets/Siren/halo_sirene.png', 8, 1, colorkey=False, scale=1)
         }
+
 
         self.attirance = 250
 
@@ -129,3 +131,7 @@ class Sirene(Ennemy):
             player.x += 5
         else:
             player.x += -5
+
+    def draw(self, surface):
+        self.sprites['aura'].draw(surface, self.x, self.y, handle=4)
+        self.sprites['idle'].draw(surface, self.x, self.y, self.flip)

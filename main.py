@@ -69,7 +69,7 @@ def main(screen: pygame.display) -> None:
 
     #--------------------------------------------------------------------------------
     salles = {
-        1: Game(map=etage1, fond=fond3, objets=(), player=Player(0, 0), enemies=enemies1),
+        1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemies1),
         2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2),
         3: Game(map=etage3, fond=fond3, objets=(), player=Player(0, 0), enemies=enemies3),
         4: Game(map=etage4, fond=fond4, objets=(), player=Player(0, 0), enemies=enemies4)
