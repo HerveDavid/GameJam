@@ -64,8 +64,8 @@ def main(screen: pygame.display) -> None:
 
     #--------------------------------------------------------------------------------
     salles = {
-        1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemies1),
-        2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2),
+        1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemiesTest),
+        2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2)
     }
     index = 1
     game = salles[index]
