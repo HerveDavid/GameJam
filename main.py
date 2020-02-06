@@ -244,15 +244,18 @@ def main(screen: pygame.display) -> None:
 
     #--------------------------------------------------------------------------------
     salles = {
-        1: Game(map=etage5, fond=fond5, objets=(), player=Player(0, 0), enemies=enemies5),
+        1: Game(map=etage1, fond=fond1, objets=(), player=Player(0, 0), enemies=enemies1),
         2: Game(map=etage2, fond=fond2, objets=(), player=Player(0, 0), enemies=enemies2),
         3: Game(map=etage3, fond=fond3, objets=(), player=Player(0, 0), enemies=enemies3),
         4: Game(map=etage4, fond=fond4, objets=(), player=Player(0, 0), enemies=enemies4),
         5: Game(map=etage5, fond=fond5, objets=(), player=Player(0, 0), enemies=enemies5),
-        6: Game(map=etage6, fond=fond6, objets=(), player=Player(0, 0), enemies=enemies6)
+        6: Game(map=etage6, fond=fond6, objets=(), player=Player(0, 0), enemies=enemies6),
+        7: Game(map=etage7, fond=fond7, objets=(), player=Player(0, 0), enemies=enemies7),
+        8: Game(map=etage8, fond=fond8, objets=(), player=Player(0, 0), enemies=enemies8),
+        9: Game(map=etage9, fond=fond9, objets=(), player=Player(0, 0), enemies=enemies9)
 
     }
-    index = 1
+    index = 9
     game = salles[index]
     #--------------------------------------------------------------------------------
     clock = pygame.time.Clock()
