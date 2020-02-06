@@ -109,7 +109,7 @@ class Player():
     def move(self):
 
         if self.xVelocity == 0 and self.stream.dir in [1, 2] and self.stream.y == self.y:
-           self.x += -3 if self.stream.dir == 1 else 3
+           self.x += -1 if self.stream.dir == 1 else 1
         else:
             self.x += self.xVelocity
 
@@ -164,4 +164,4 @@ class Player():
                                        self.sprites[s].cells[0][2],
                                        self.sprites[s].cells[0][3]
                                        )
-        pygame.draw.rect(fenetre, [255, 0, 0], self.hitbox)
+        # pygame.draw.rect(fenetre, [255, 0, 0], self.hitbox)

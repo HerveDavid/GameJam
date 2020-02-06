@@ -5,7 +5,8 @@ class Wind():
 
     def __init__(self):
 
-        self.stream_horizontal = Sprite('Assets/Textures/vent_horizontal.png', 10, 1)
+        self.stream_horizontal = Sprite('Assets/Wind/vent2.png', 10, 4)
+        self.stream_horizontal2 = Sprite('Assets/Textures/vent_horizontal.png', 9, 1)
         self.stream_vertical = Sprite('Assets/Textures/vent.png', 10, 1)
 
 
@@ -43,3 +44,4 @@ class Stream:
         else:
             for i in range(int(NB_WIDTH_CELL) + 1):
                 self.windSprite.stream_horizontal.draw(screen, i * WIDTH_CELL, self.y, flip=flip)
+                self.windSprite.stream_horizontal2.draw(screen, i * WIDTH_CELL, self.y, flip=flip)

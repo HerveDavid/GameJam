@@ -39,8 +39,9 @@ class Platform():
             if  player.y > self.hitbox.y + self.hitbox.height:
                 player.y += 20
 
-            if player.x < self.hitbox.x:
-                player.x = self.hitbox.x - self.hitbox.width / 2
+            if player.hitbox.x < self.hitbox.x:
+                player.x += -player.hitbox.width
+                player.y += -10
             elif player.x > self.hitbox.x:
                 player.x = self.hitbox.x + WIDTH_CELL + 20
             #
