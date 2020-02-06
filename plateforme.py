@@ -36,6 +36,11 @@ class Platform():
         # if player.xVelocity != 0:
         if self.type != 7 and player.hitbox and self.hitbox and self.hitbox.colliderect(player.hitbox):
 
+            # if player.y < self.hitbox.y + self.hitbox.height and player.y < self.hitbox.y:
+            #     player.y += 20
+            #     player.falling = True
+            # else:
+
             if player.x < self.hitbox.x:
                 player.x = self.hitbox.x - self.hitbox.width / 2
             elif player.x > self.hitbox.x:
