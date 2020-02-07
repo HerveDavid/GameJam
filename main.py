@@ -257,7 +257,10 @@ def display_instructions(screen):
 
 def main(screen: pygame.display) -> None:
 
-    blabla = 0
+    test = pygame.font.Font('Font/Pixeled.ttf', 10)
+
+    score = 0
+
 
     #--------------------------------------------------------------------------------
     salles = {
@@ -314,16 +317,73 @@ def main(screen: pygame.display) -> None:
                 print("fin du jeu")
                 return None
             else:
-              game = salles[index]
+                score += game.score - 1
+                game = salles[index]
+
+        print(score)
+        scores = test.render('REAPPARITIONS: ' + str(score), True, white)
 
         #------------------------------------------
         game.playMixerEnnemy(channels[1], sounds_minotaur)
         game.playMixerPlayer(channels[0], sound_player_jump, sound_flute, sound_step)
         game.playMixerAmbiant(channels[2], sound_blow)
+
+        screen.blit(scores, (WIDTH/2 - text.get_rect().width/2 + 20 , HEIGHT - 100))
+
         pygame.display.update()
         screen.fill((0, 0, 0))
         
         clock.tick(FPS)
+
+def findujeu(screen):
+    gg =  font.render('BIEN JOUÉ', True, white)
+    win = font.render('VOUS AVEZ PROUVÉ VOTRE VALEUR', True, white)
+    accueil = font.render('ACCUEIL', True, white)
+
+
+
+
+    if not pygame.mixer.get_busy():
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.music.load("Audio/2.mp3")
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.5)
+
+    start = True
+    while start:
+        screen.fill(black)
+        clock.tick(10)
+
+        action = None
+        pos = pygame.mouse.get_pos()
+
+        bt = Sprite('Assets/boutons/button.png', 1, 1, scale=4, colorkey=0)
+        bt.draw(screen, WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, handle=0)
+
+
+        if pos[0] >= WIDTH/2 - button_width/2 and pos[0] <= WIDTH/2 + button_width/2 and pos[1] >= HEIGHT/2 + 30 and pos[1] <= HEIGHT/2 + 30 + button_height:
+            colour = white
+            action = "start"
+            bt.draw(screen, WIDTH / 2 - button_width / 2, HEIGHT / 2 + 30, handle=0)
+
+        # bt.draw(screen, WIDTH - (button_width + marge), HEIGHT - (button_height + marge), handle=0)
+
+        screen.blit(gg, (WIDTH/2 - text.get_rect().width/2 - 120, 150))
+        screen.blit(win, (WIDTH/2 - text.get_rect().width/2 - 120, 200))
+        screen.blit(accueil, (WIDTH / 2 - text_play.get_rect().width / 2 , HEIGHT/2 + 36))
+
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if pygame.mouse.get_pressed()[0]:
+                if action is not None:
+                    return action
+
 
 if __name__ == '__main__':
 
@@ -335,6 +395,7 @@ if __name__ == '__main__':
             if ans == "start":
                 # menu = False
                 main(screen)
+                ans = findujeu(screen)
             elif ans == "credits":
                 menu = False
                 ans2 = display_credits(screen)

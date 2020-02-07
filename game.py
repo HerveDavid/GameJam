@@ -135,7 +135,7 @@ class Game():
     def playerLose(self):
         self.player.x = self.startx
         self.player.y = self.starty
-        self.score = 0
+        self.score += 1
 
     def initMixer(self):
         pygame.init()
