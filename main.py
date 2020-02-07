@@ -41,6 +41,7 @@ button_height = 80
 
 # Menu principal
 def start_menu(screen):
+    screen.fill(black)
 
     bgaccueil = Sprite('Assets/Background/background_accueil.png', 1, 1, scale=2.68)
     persoassie = Sprite('Assets/Player/perso_assi.png', 10, 9, scale=2.5)
@@ -264,6 +265,8 @@ def display_instructions(screen):
                     return action
 
 def main(screen: pygame.display) -> None:
+
+    blabla = 0
 
     #--------------------------------------------------------------------------------
     salles = {
