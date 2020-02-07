@@ -30,6 +30,8 @@ marge = 40
 button_width = 240
 button_height = 80
 
+finalscore = 0
+
 # Menu principal
 def start_menu(screen):
     screen.fill(black)
@@ -257,10 +259,7 @@ def display_instructions(screen):
 
 def main(screen: pygame.display) -> None:
 
-    test = pygame.font.Font('Font/Pixeled.ttf', 10)
-
-    score = 0
-
+    global  finalscore
 
     #--------------------------------------------------------------------------------
     salles = {
@@ -317,18 +316,16 @@ def main(screen: pygame.display) -> None:
                 print("fin du jeu")
                 return None
             else:
-                score += game.score - 1
+                finalscore += game.score
                 game = salles[index]
 
-        print(score)
-        scores = test.render('REAPPARITIONS: ' + str(score), True, white)
+        # print(score)
 
         #------------------------------------------
         game.playMixerEnnemy(channels[1], sounds_minotaur)
         game.playMixerPlayer(channels[0], sound_player_jump, sound_flute, sound_step)
         game.playMixerAmbiant(channels[2], sound_blow)
 
-        screen.blit(scores, (WIDTH/2 - text.get_rect().width/2 + 20 , HEIGHT - 100))
 
         pygame.display.update()
         screen.fill((0, 0, 0))
@@ -336,8 +333,12 @@ def main(screen: pygame.display) -> None:
         clock.tick(FPS)
 
 def findujeu(screen):
+
+    global finalscore
     gg =  font.render('BIEN JOUÉ', True, white)
     win = font.render('VOUS AVEZ PROUVÉ VOTRE VALEUR', True, white)
+    sc = font.render('APPARITIONS:' + str(finalscore), True, white)
+
     accueil = font.render('ACCUEIL', True, white)
 
 
@@ -371,6 +372,7 @@ def findujeu(screen):
 
         screen.blit(gg, (WIDTH/2 - text.get_rect().width/2 - 120, 150))
         screen.blit(win, (WIDTH/2 - text.get_rect().width/2 - 120, 200))
+        screen.blit(sc, (WIDTH/2 - text.get_rect().width/2 - 120, 250))
         screen.blit(accueil, (WIDTH / 2 - text_play.get_rect().width / 2 , HEIGHT/2 + 36))
 
 

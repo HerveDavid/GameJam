@@ -22,6 +22,7 @@ class Game():
         self.endy = 0
         self.score = 0
         self.time = 0
+        self.test = pygame.font.Font('Font/Pixeled.ttf', 10)
         self.load()
 
 
@@ -123,6 +124,8 @@ class Game():
                 or (self.player.x < 0 or self.player.x > WIDTH):
             self.playerLose()
 
+        scores = self.test.render('REAPPARITIONS: ' + str(self.score), True, [255, 255, 255])
+        screen.blit(scores, (WIDTH / 2  + 20, HEIGHT - 100))
 
         self.player.draw(screen)
 
@@ -136,6 +139,7 @@ class Game():
         self.player.x = self.startx
         self.player.y = self.starty
         self.score += 1
+        # print(self.score)
 
     def initMixer(self):
         pygame.init()
