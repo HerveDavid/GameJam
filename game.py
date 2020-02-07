@@ -125,7 +125,7 @@ class Game():
             self.playerLose()
 
         scores = self.test.render('REAPPARITIONS: ' + str(self.score), True, [255, 255, 255])
-        screen.blit(scores, (WIDTH / 2  + 20, HEIGHT - 100))
+        screen.blit(scores, (WIDTH / 2  - 60, 20))
 
         self.player.draw(screen)
 

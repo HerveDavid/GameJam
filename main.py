@@ -259,6 +259,7 @@ def display_instructions(screen):
 
 def main(screen: pygame.display) -> None:
 
+    global finalscore
     tampon = 0
 
     #--------------------------------------------------------------------------------
@@ -317,7 +318,7 @@ def main(screen: pygame.display) -> None:
                 return None
             else:
                 tampon += game.score
-                print(tampon)
+                finalscore += tampon
                 game = salles[index]
                 game.score = tampon
                 tampon = 0
