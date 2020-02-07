@@ -1,11 +1,3 @@
-import pygame
-from utilitaries import *
-from colors import COLORS
-from player import Player
-from ennemy import *
-from game import Game
-from  maps import *
-from sprite import Sprite
 import pygame.freetype
 from  changementSalles import *
 
