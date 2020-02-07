@@ -8,7 +8,6 @@ from  maps import *
 from sprite import Sprite
 import pygame.freetype
 from  changementSalles import *
-from tkinter import *
 
 pygame.font.init()
 pygame.init()
@@ -313,7 +312,7 @@ def main(screen: pygame.display) -> None:
 
     sounds_ambient = []
     sounds_ambient.append(sound_blow)
-    running = TRUE
+    running = True
     while running:
         events()
         #------------------------------------------
